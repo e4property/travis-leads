@@ -186,11 +186,24 @@ RESULT_RE = re.compile(
 )
 
 
+def _page_diag(driver):
+    try:
+        title = driver.title
+        url = driver.current_url
+        snippet = driver.execute_script("return document.body ? document.body.innerText.slice(0,400) : '(no body)';")
+        return f"url={url} | title={title!r} | body_snippet={snippet!r}"
+    except Exception as e:
+        return f"(diag failed: {e})"
+
+
 def accept_disclaimer(driver):
     from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.common.by import By
 
-    driver.get(f"{TCC_BASE}/RealEstate/SearchEntry.aspx")
+    driver.set_page_load_timeout(45)
+    try:
+        driver.get(f"{TCC_BASE}/RealEstate/SearchEntry.aspx")
+    except Exception as e:
+        log.warning(f"  accept_disclaimer: driver.get() error: {e}")
 
     def on_search_form(d):
         return (
@@ -200,14 +213,14 @@ def accept_disclaimer(driver):
         )
 
     try:
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 30).until(
             lambda d: d.execute_script(
                 "return !!document.querySelector('a[id*=\"lnkAccept\"]') || "
                 "document.querySelectorAll('input[id*=\"dclDocType\"]').length > 0;"
             )
         )
     except Exception:
-        log.warning("  accept_disclaimer: timed out waiting for disclaimer link or search form")
+        log.warning(f"  accept_disclaimer: 30s wait for disclaimer link/search form failed | {_page_diag(driver)}")
 
     clicked = driver.execute_script(
         "var a = document.querySelector('a[id*=\"lnkAccept\"]'); "
@@ -215,14 +228,14 @@ def accept_disclaimer(driver):
     )
     if clicked:
         try:
-            WebDriverWait(driver, 15).until(on_search_form)
+            WebDriverWait(driver, 30).until(on_search_form)
             log.info("  accept_disclaimer: clicked accept, search form loaded")
         except Exception:
-            log.warning("  accept_disclaimer: clicked accept but search form (dclDocType checkboxes) never appeared")
+            log.warning(f"  accept_disclaimer: clicked accept but search form never appeared | {_page_diag(driver)}")
     elif on_search_form(driver):
         log.info("  accept_disclaimer: already on search form (no disclaimer this time)")
     else:
-        log.warning("  accept_disclaimer: no disclaimer link found and not on search form either")
+        log.warning(f"  accept_disclaimer: no disclaimer link found and not on search form either | {_page_diag(driver)}")
 
 
 def select_doc_type(driver, code):
