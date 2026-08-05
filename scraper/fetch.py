@@ -69,8 +69,13 @@ MAX_PAGES    = 15   # 20 records/page; early-exits on known_docs anyway
 
 # Doc types to pull from tccsearch.org, mapped to our internal lead "type".
 # checkbox `value` codes confirmed live against the site — see CLAUDE.md.
+# Foreclosure-only for now per user request (2026-08-04) — other types
+# (pre-fore/lis pendens/liens/judgments) and Code Enforcement disabled
+# until foreclosure scraping itself is confirmed working end-to-end.
 DOC_TYPES = {
     "FORECLOSURE": "NOF",     # Notice of Substitute Trustee Sale
+}
+_DISABLED_DOC_TYPES = {
     "APT SUB TR":  "APPT",    # Appointment of Substitute Trustee (pre-fore signal)
     "LIS PEND":    "LP",      # Lis Pendens
     "AJ":          "JUD",     # Abstract of Judgment
@@ -210,11 +215,20 @@ def select_doc_type(driver, code):
 
 
 def submit_search(driver):
+    from selenium.webdriver.support.ui import WebDriverWait
+
     driver.execute_script("""
         var btn = document.getElementById('cphNoMargin_SearchButtons1_btnSearch');
         if (btn) btn.click();
     """)
-    time.sleep(3)
+    try:
+        WebDriverWait(driver, 20).until(
+            lambda d: any(s in d.find_element("tag name", "body").text
+                          for s in ("records found", "No Results Found", "Error While Running Search"))
+        )
+    except Exception:
+        log.warning("  submit_search: timed out waiting for results/no-results/error text")
+    time.sleep(1)
 
 
 def goto_results_page(driver, page_num):
@@ -232,7 +246,7 @@ def goto_results_page(driver, page_num):
     return ok
 
 
-def parse_results_page(driver):
+def parse_results_page(driver, debug_label=""):
     from selenium.webdriver.common.by import By
     body_text = driver.find_element(By.TAG_NAME, "body").text
     records = []
@@ -246,6 +260,18 @@ def parse_results_page(driver):
             "legal_desc":   legal.strip(),
             "status_index": status.strip(),
         })
+
+    if not records:
+        # Self-diagnosing: log enough of the raw page so a 0-match run is
+        # debuggable from the Action log instead of a silent empty result.
+        has_9digit = bool(re.search(r"\b\d{9}\b", body_text))
+        log.warning(
+            f"  [{debug_label}] parse_results_page: 0 regex matches | "
+            f"body_text_len={len(body_text)} | contains_9digit_number={has_9digit} | "
+            f"url={driver.current_url}"
+        )
+        log.warning(f"  [{debug_label}] body text snippet: {body_text[:600]!r}")
+
     return records
 
 
@@ -271,6 +297,11 @@ def scrape_tccsearch(known_docs, driver, doc_code, lead_type):
         return []
     submit_search(driver)
 
+    from selenium.webdriver.common.by import By
+    banner = driver.find_element(By.TAG_NAME, "body").text
+    m = re.search(r"Criteria:.{0,120}", banner)
+    log.info(f"  Search criteria banner: {m.group(0) if m else '(not found — see warning below if 0 rows)'}")
+
     new_leads = []
     zero_new_streak = 0
 
@@ -280,7 +311,7 @@ def scrape_tccsearch(known_docs, driver, doc_code, lead_type):
                 log.info(f"  Page {page}: pagination control not found — stopping")
                 break
 
-        rows = parse_results_page(driver)
+        rows = parse_results_page(driver, debug_label=f"{doc_code} p{page}")
         if not rows:
             log.info(f"  Page {page}: 0 rows — stopping")
             break
@@ -533,6 +564,10 @@ def main():
     log.info("=" * 60)
 
     existing = load_existing()
+    dropped_ce = sum(1 for r in existing if r.get("type") == "CE")
+    existing = [r for r in existing if r.get("type") != "CE"]
+    if dropped_ce:
+        log.info(f"Dropped {dropped_ce} existing CE records (foreclosure-only mode)")
     for r in existing:
         r["is_new"] = False
     known_docs = {r["doc_number"] for r in existing if r.get("doc_number")}
@@ -568,8 +603,8 @@ def main():
             log.debug(f"TCAD enrich error [{r['doc_number']}]: {e}")
         time.sleep(0.3)
 
-    ce_leads = fetch_code_enforcement(known_docs)
-    all_new.extend(ce_leads)
+    # Code Enforcement disabled for now — foreclosure-only per user request,
+    # and CE data has no owner name anyway (see fetch_code_enforcement docstring).
 
     all_records = existing + all_new
     all_records = purge_past_auctions(all_records)
