@@ -187,15 +187,42 @@ RESULT_RE = re.compile(
 
 
 def accept_disclaimer(driver):
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.common.by import By
+
     driver.get(f"{TCC_BASE}/RealEstate/SearchEntry.aspx")
-    time.sleep(2)
-    try:
-        driver.execute_script(
-            "var a = document.querySelector('a[id*=\"lnkAccept\"]'); if (a) a.click();"
+
+    def on_search_form(d):
+        return (
+            d.execute_script(
+                "return document.querySelectorAll('input[id*=\"dclDocType\"]').length;"
+            ) > 0
         )
-        time.sleep(2)
-    except Exception as e:
-        log.debug(f"disclaimer accept: {e}")
+
+    try:
+        WebDriverWait(driver, 10).until(
+            lambda d: d.execute_script(
+                "return !!document.querySelector('a[id*=\"lnkAccept\"]') || "
+                "document.querySelectorAll('input[id*=\"dclDocType\"]').length > 0;"
+            )
+        )
+    except Exception:
+        log.warning("  accept_disclaimer: timed out waiting for disclaimer link or search form")
+
+    clicked = driver.execute_script(
+        "var a = document.querySelector('a[id*=\"lnkAccept\"]'); "
+        "if (a) { a.click(); return true; } return false;"
+    )
+    if clicked:
+        try:
+            WebDriverWait(driver, 15).until(on_search_form)
+            log.info("  accept_disclaimer: clicked accept, search form loaded")
+        except Exception:
+            log.warning("  accept_disclaimer: clicked accept but search form (dclDocType checkboxes) never appeared")
+    elif on_search_form(driver):
+        log.info("  accept_disclaimer: already on search form (no disclaimer this time)")
+    else:
+        log.warning("  accept_disclaimer: no disclaimer link found and not on search form either")
 
 
 def select_doc_type(driver, code):
