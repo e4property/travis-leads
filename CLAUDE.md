@@ -6,6 +6,50 @@ bexar-leads and nueces-leads but **fully independent** — separate repo,
 separate GitHub Pages dashboard, separate GitHub Actions, zero shared code
 or state with the other two counties.
 
+## ⚠ CURRENT BLOCKER (2026-08-05) — read this first
+
+tccsearch.org is **behind Cloudflare bot-detection ("Just a moment..."
+challenge page)**. Manual/interactive browser sessions load it fine, but
+the GitHub Actions runner's request gets served the Cloudflare challenge
+instead of the real site, every time — confirmed via the scraper's
+diagnostic logging (page title `"Just a moment..."`, body text `"This
+website uses a security service to protect against malicious bots..."
+Performance and Security by Cloudflare`). This is why every scrape run
+has returned 0 leads — the doc-type checkbox search logic is correct and
+tested; it just never reaches a real page in CI.
+
+**Hard constraint: will not build Cloudflare-bypass tooling** (no
+residential-proxy rotation, no "undetected-chromedriver"-style
+anti-detection packages, no CAPTCHA/challenge-solving services) — this is
+a firm policy line, not a technical limitation to work around later.
+
+Researched legitimate alternatives (2026-08-05), none panned out cleanly:
+- **No public subscriber/bulk-API tier** documented for Aumentum
+  Recorder/Harris Recording Solutions — the feature exists in their
+  product but is county-configured; would need a direct sales/business
+  conversation with Harris and the Travis County Clerk's office
+  (512-854-9188 opt #7), not a self-serve signup.
+- **`travis.tx.publicsearch.us`** is a second official-looking front-end,
+  but it's already confirmed empty for FC/RP departments regardless of
+  Cloudflare (see below) — not a workaround.
+- **Even the paid competitor (texasnts.com) scrapes** — their own "how it
+  works" page says custom automation agents navigate each county site,
+  no purchased/authenticated data feed exists even for them.
+- **Texas Property Code §51.002(f-1)** requires posting "without charge
+  or registration" — some counties comply with a plain ungated page
+  (e.g. Bell County posts PDFs directly, no gate). Travis appears to
+  satisfy this obligation entirely through tccsearch.org itself; no
+  separate ungated notice list was found.
+
+**Open, unexplored options** (need the user's decision, not something to
+just implement): call the Clerk's office directly and ask point-blank
+whether an authenticated subscriber tier exists; run the scrape from a
+non-datacenter network origin (e.g. a self-hosted runner) instead of
+GitHub-hosted IPs — a legitimate infrastructure choice, not evasion
+software, but unverified whether it'd actually help (could be
+fingerprint-based blocking, not just IP-reputation-based); reconsider
+texasnts.com given "build" turned out to be genuinely hard here too.
+
 ## Data Sources (all confirmed live, Aug 2026)
 
 ### Primary: tccsearch.org — Travis County Clerk Recorder
