@@ -1,0 +1,615 @@
+"""
+Travis County (Austin, TX) Motivated Seller Lead Scraper v1.0
+
+Primary source: tccsearch.org — Travis County Clerk Recorder (Aumentum
+Recorder / Harris Recording Solutions, legacy ASP.NET WebForms — NOT the
+Tyler PublicSearch SPA that Bexar/Nueces use; travis.tx.publicsearch.us
+is essentially unpopulated for this county, confirmed dead end).
+
+Confirmed live (see CLAUDE.md for full reconnaissance notes):
+  - Disclaimer accept: a[id*="lnkAccept"].click()
+  - Doc type checkboxes: input#cphNoMargin_f_dclDocType_N, .click()
+    (NOT .checked = true — that silently no-ops on this site)
+  - Submit: #cphNoMargin_SearchButtons1_btnSearch.click()
+  - Pagination: select#...OptionsBar1_ItemList, set .value then
+    itemChange(select) — NOT a normal <select> onchange
+  - Results are parsed from rendered body text (regex), not DOM
+    selectors — the grid's cell class names look session/build-generated
+    (e.g. "igede12b8e") and aren't safe to depend on. Sale date is
+    already on the results list (no per-doc click-through needed, unlike
+    Bexar).
+
+Enrichment: TCAD parcel/owner/valuation via ArcGIS
+  (services1.arcgis.com/.../TCAD_Selected_Locations/FeatureServer/0 —
+  the *_public/MapServer/0 layer has no owner/value fields, don't use it)
+Code enforcement: Austin Code Dept complaint cases (Socrata API,
+  data.austintexas.gov/resource/6wtj-zbtb.json)
+
+Debt-stack schema: unlike Bexar/Nueces's single loan_amount field, this
+scraper tracks tax/judgment/HOA/mechanics liens as discrete fields —
+this repo is the test bed for backporting that to the other counties.
+"""
+
+import json
+import logging
+import os
+import re
+import time
+import urllib.request
+import urllib.parse
+from datetime import datetime, timezone, timedelta
+from pathlib import Path
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s.%(msecs)03d [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+log = logging.getLogger(__name__)
+
+COUNTY = "travis"
+TCC_BASE = "https://tccsearch.org"
+# The real, full county parcel layer (386,682 records, confirmed live) —
+# has PROP_ID/situs address/legal_desc but NO owner name or valuation.
+# services1.arcgis.com/.../TCAD_Selected_Locations has owner+value fields
+# but is a 33-record sample dataset, not usable for real lookups — do not
+# use it despite it "matching" on a spot check.
+TCAD_ARCGIS = "https://gis.traviscountytx.gov/server1/rest/services/Boundaries_and_Jurisdictions/TCAD_public/MapServer/0"
+AUSTIN_CE_API = "https://data.austintexas.gov/resource/6wtj-zbtb.json"
+
+RECORDS_PATH = Path("dashboard/records.json")
+DATA_PATH    = Path("data/records.json")
+
+TODAY        = datetime.now(timezone.utc)
+TODAY_NAIVE  = datetime.now()
+RUN_TIMESTAMP = TODAY.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+SCRAPE_DAYS  = 90   # rolling retention window for leads with no sale_date
+MAX_PAGES    = 15   # 20 records/page; early-exits on known_docs anyway
+
+# Doc types to pull from tccsearch.org, mapped to our internal lead "type".
+# checkbox `value` codes confirmed live against the site — see CLAUDE.md.
+DOC_TYPES = {
+    "FORECLOSURE": "NOF",     # Notice of Substitute Trustee Sale
+    "APT SUB TR":  "APPT",    # Appointment of Substitute Trustee (pre-fore signal)
+    "LIS PEND":    "LP",      # Lis Pendens
+    "AJ":          "JUD",     # Abstract of Judgment
+    "FED TAX":     "LNFED",   # Federal tax lien
+    "ST TAX LIEN": "LNSTATE", # State tax lien
+    "ML":          "LNMECH",  # Mechanics lien
+    "ASSESS LIEN": "LNHOA",   # HOA/assessment lien
+}
+
+
+# ── HELPERS ───────────────────────────────────────────────────────────────────
+def get_driver():
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.chrome.service import Service
+    from webdriver_manager.chrome import ChromeDriverManager
+
+    opts = Options()
+    opts.add_argument("--headless=new")
+    opts.add_argument("--no-sandbox")
+    opts.add_argument("--disable-dev-shm-usage")
+    opts.add_argument("--disable-gpu")
+    opts.add_argument("--window-size=1280,900")
+    opts.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    svc = Service(ChromeDriverManager().install())
+    return webdriver.Chrome(service=svc, options=opts)
+
+
+def fetch_json(url, timeout=20):
+    try:
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "TravisLeadsBot/1.0",
+            "Accept": "application/json",
+        })
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return json.loads(r.read().decode("utf-8", errors="replace"))
+    except Exception as e:
+        log.debug(f"fetch_json error [{url}]: {e}")
+        return None
+
+
+def new_record(doc_number, lead_type, source="tccsearch", run_ts=None):
+    return {
+        "doc_number":          doc_number,
+        "county":              COUNTY,
+        "type":                lead_type,
+        "source":              source,
+        "owner":               "",
+        "address":             "",
+        "city":                "Austin",
+        "zip":                 "",
+        "date_filed":          "",
+        "sale_date":           "",
+        "days_until_sale":     None,
+        "legal_desc":          "",
+        "status_index":        "",   # Temp | Perm (tccsearch temp/permanent index)
+        "global_id":           "",   # tccsearch detail-page id
+        "absentee":            False,
+        "is_entity":           False,
+        "duplicate":           False,
+        "is_new":              True,
+        "score":               0,
+        "flags":               [],
+        "run_ts":              run_ts or RUN_TIMESTAMP,
+        # ── Debt-stack (discrete fields, not one loan_amount) ──────────────
+        "mortgage_balance_est": "",
+        "tax_delinquent_amt":   "",
+        "tax_delinquent_years": "",
+        "judgment_amt":         "",
+        "hoa_lien_amt":         "",
+        "mechanics_lien_amt":   "",
+        "other_lien_amt":       "",
+        "total_liens_est":      "",
+        "equity_est":           "",
+        "equity_pct":           "",
+        "ltv_est":              "",
+        "stacked_liens":        [],   # doc types seen for this owner/address across runs
+        # ── TCAD enrichment ─────────────────────────────────────────────────
+        "market_value":        "",
+        "appraised_val":       "",
+        "assessed_val":        "",
+        "deed_date":           "",
+        "prop_id":             "",
+        "owner_mail_addr":     "",
+        # ── Code enforcement ────────────────────────────────────────────────
+        "ce_case_id":          "",
+        "ce_status":           "",
+        "ce_priority":         "",
+        "ce_case_type":        "",
+        "ce_repeat_offender":  False,
+        "ce_opened_date":      "",
+        # ── Dashboard/CRM fields ────────────────────────────────────────────
+        "dash_phone":          "",
+        "dash_dispo":          "new",
+        "dash_notes":          "",
+        "ghl_pushed":          False,
+        "ghl_id":              "",
+    }
+
+
+# ── TCCSEARCH.ORG SCRAPER ───────────────────────────────────────────────────
+RESULT_RE = re.compile(
+    r"(\d{9})\s+(\d{2}/\d{2}/\d{4})\s+[A-Z][A-Z &/'.\-]+?\s+"
+    r"\[R\]\s*([^\n\[]+?)\s*\(\+\)\s*"
+    r"(?:\[E\]\s*(\d{2}/\d{2}/\d{4})\s*\(\+\)\s*)?"
+    r"(.+?)\s+(Temp|Perm)\b",
+    re.DOTALL,
+)
+
+
+def accept_disclaimer(driver):
+    driver.get(f"{TCC_BASE}/RealEstate/SearchEntry.aspx")
+    time.sleep(2)
+    try:
+        driver.execute_script(
+            "var a = document.querySelector('a[id*=\"lnkAccept\"]'); if (a) a.click();"
+        )
+        time.sleep(2)
+    except Exception as e:
+        log.debug(f"disclaimer accept: {e}")
+
+
+def select_doc_type(driver, code):
+    """Check exactly one doc-type checkbox by its internal value code."""
+    js = """
+        var target = arguments[0];
+        var boxes = document.querySelectorAll('input[type=checkbox][id*="dclDocType"]');
+        for (var i = 0; i < boxes.length; i++) {
+            if (boxes[i].checked) boxes[i].click();  // clear any stale state
+        }
+        for (var i = 0; i < boxes.length; i++) {
+            if (boxes[i].value === target) { boxes[i].click(); return true; }
+        }
+        return false;
+    """
+    return driver.execute_script(js, code)
+
+
+def submit_search(driver):
+    driver.execute_script("""
+        var btn = document.getElementById('cphNoMargin_SearchButtons1_btnSearch');
+        if (btn) btn.click();
+    """)
+    time.sleep(3)
+
+
+def goto_results_page(driver, page_num):
+    js = """
+        var n = arguments[0];
+        var sel = document.getElementById('cphNoMargin_cphNoMargin_OptionsBar1_ItemList');
+        if (!sel) return false;
+        sel.value = String(n);
+        if (typeof itemChange === 'function') { itemChange(sel); }
+        else { sel.dispatchEvent(new Event('change', {bubbles:true})); }
+        return true;
+    """
+    ok = driver.execute_script(js, page_num)
+    time.sleep(2)
+    return ok
+
+
+def parse_results_page(driver):
+    from selenium.webdriver.common.by import By
+    body_text = driver.find_element(By.TAG_NAME, "body").text
+    records = []
+    for m in RESULT_RE.finditer(body_text):
+        doc_num, filed, name, sale_date, legal, status = m.groups()
+        records.append({
+            "doc_number":   doc_num.strip(),
+            "date_filed":   filed.strip(),
+            "owner":        name.strip().title(),
+            "sale_date":    sale_date.strip() if sale_date else "",
+            "legal_desc":   legal.strip(),
+            "status_index": status.strip(),
+        })
+    return records
+
+
+ADDR_IN_LEGAL_RE = re.compile(
+    r"LOC\s+(\d{1,6}[A-Z0-9 .\-/]{3,40}?)\s+"
+    r"(AUSTIN|DEL VALLE|PFLUGERVILLE|MANOR|LAGO VISTA|LAKEWAY|BEE CAVE|"
+    r"CEDAR PARK|LEANDER|ROLLINGWOOD|WEST LAKE HILLS|BRIARCLIFF)\s+TX\s+(\d{5})",
+    re.IGNORECASE,
+)
+
+
+def parse_address_from_legal(legal_desc):
+    m = ADDR_IN_LEGAL_RE.search(legal_desc or "")
+    if not m:
+        return "", "", ""
+    return m.group(1).strip().upper(), m.group(2).strip().title(), m.group(3).strip()
+
+
+def scrape_tccsearch(known_docs, driver, doc_code, lead_type):
+    log.info(f"Scraping tccsearch.org: {doc_code} -> type={lead_type}")
+    if not select_doc_type(driver, doc_code):
+        log.warning(f"  Could not find checkbox for doc code {doc_code} — skipping")
+        return []
+    submit_search(driver)
+
+    new_leads = []
+    zero_new_streak = 0
+
+    for page in range(1, MAX_PAGES + 1):
+        if page > 1:
+            if not goto_results_page(driver, page):
+                log.info(f"  Page {page}: pagination control not found — stopping")
+                break
+
+        rows = parse_results_page(driver)
+        if not rows:
+            log.info(f"  Page {page}: 0 rows — stopping")
+            break
+
+        page_new = 0
+        for row in rows:
+            doc_num = row["doc_number"]
+            if doc_num in known_docs:
+                continue
+            page_new += 1
+            known_docs.add(doc_num)
+
+            rec = new_record(doc_num, lead_type)
+            rec["owner"]        = row["owner"]
+            rec["date_filed"]   = row["date_filed"]
+            rec["sale_date"]    = row["sale_date"]
+            rec["legal_desc"]   = row["legal_desc"]
+            rec["status_index"] = row["status_index"]
+
+            addr, city, zipc = parse_address_from_legal(row["legal_desc"])
+            if addr:
+                rec["address"] = addr
+                rec["city"]    = city
+                rec["zip"]     = zipc
+
+            d = days_until_sale(rec["sale_date"])
+            rec["days_until_sale"] = d
+
+            new_leads.append(rec)
+
+        log.info(f"  Page {page}: {len(rows)} rows, {page_new} new")
+        if page_new == 0:
+            zero_new_streak += 1
+        else:
+            zero_new_streak = 0
+        if zero_new_streak >= 2:
+            log.info("  2 consecutive pages with 0 new — stopping early")
+            break
+
+    log.info(f"  {doc_code}: {len(new_leads)} new leads")
+    return new_leads
+
+
+def days_until_sale(sale_date_str):
+    if not sale_date_str:
+        return None
+    try:
+        dt = datetime.strptime(sale_date_str.strip(), "%m/%d/%Y")
+        return max((dt - TODAY_NAIVE).days, 0)
+    except Exception:
+        return None
+
+
+def auction_passed(sale_date_str):
+    if not sale_date_str:
+        return False
+    try:
+        dt = datetime.strptime(sale_date_str.strip(), "%m/%d/%Y")
+        return dt < TODAY_NAIVE
+    except Exception:
+        return False
+
+
+def filed_within_window(date_str, days=SCRAPE_DAYS):
+    if not date_str:
+        return True
+    try:
+        dt = datetime.strptime(date_str.strip(), "%m/%d/%Y")
+        return (TODAY_NAIVE - dt).days <= days
+    except Exception:
+        return True
+
+
+# ── TCAD ENRICHMENT (ArcGIS) ────────────────────────────────────────────────
+def tcad_query(where, out_fields="*", limit=5):
+    params = urllib.parse.urlencode({
+        "where": where,
+        "outFields": out_fields,
+        "returnGeometry": "false",
+        "resultRecordCount": limit,
+        "f": "json",
+    })
+    data = fetch_json(f"{TCAD_ARCGIS}/query?{params}")
+    if not data:
+        return []
+    return [f.get("attributes", {}) for f in data.get("features", [])]
+
+
+def enrich_from_tcad(rec):
+    """
+    Matches by situs address (parsed from the legal description) against
+    the full county parcel layer. This confirms the address and gets
+    PROP_ID + a prodigycad.com detail-page link, but NOT owner name or
+    market value — TCAD's public ArcGIS layer doesn't expose those (see
+    CLAUDE.md). Filling market_value/owner_mail_addr is future work: needs
+    a verified scrape of the prodigycad property-detail page, same
+    pattern as Bexar's trueautomation.com deed/ARV lookup.
+    """
+    addr = (rec.get("address") or "").strip()
+    if not addr:
+        return
+    num = addr.split()[0] if addr.split() else ""
+    if not num.isdigit():
+        return
+    esc = addr.replace("'", "''")
+    feats = tcad_query(f"situs_address LIKE UPPER('%{esc}%')", limit=3)
+    if not feats:
+        return
+    a = feats[0]
+    rec["prop_id"]    = a.get("PROP_ID") or ""
+    rec["legal_desc"] = rec.get("legal_desc") or a.get("legal_desc") or ""
+    rec["_tcad_hyperlink"] = a.get("hyperlink") or ""
+
+
+# ── CODE ENFORCEMENT (Austin Socrata) ───────────────────────────────────────
+def fetch_code_enforcement(known_docs, limit=200):
+    app_token = os.environ.get("SOCRATA_APP_TOKEN", "")
+    params = {
+        "$limit": limit,
+        "$order": "opened_date DESC",
+        "$where": "status = 'Active'",
+    }
+    url = f"{AUSTIN_CE_API}?{urllib.parse.urlencode(params)}"
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "TravisLeadsBot/1.0",
+        "Accept": "application/json",
+        **({"X-App-Token": app_token} if app_token else {}),
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            cases = json.loads(r.read().decode("utf-8", errors="replace"))
+    except Exception as e:
+        log.warning(f"Austin CE fetch error: {e}")
+        return []
+
+    new_leads = []
+    for c in cases:
+        case_id = c.get("case_id") or c.get("servicerequestnumber")
+        if not case_id:
+            continue
+        doc_key = f"CE-{case_id}"
+        if doc_key in known_docs:
+            continue
+        known_docs.add(doc_key)
+
+        rec = new_record(doc_key, "CE", source="code_enforcement")
+        rec["owner"]              = ""
+        street = c.get("street_name", "")
+        house  = c.get("house_number", "")
+        rec["address"]            = f"{house} {street}".strip()
+        rec["city"]               = c.get("city", "Austin") or "Austin"
+        rec["zip"]                = c.get("zip_code", "")
+        rec["date_filed"]         = c.get("opened_date", "")[:10]
+        rec["ce_case_id"]         = case_id
+        rec["ce_status"]          = c.get("status", "")
+        rec["ce_priority"]        = c.get("priority", "")
+        rec["ce_case_type"]       = c.get("case_type", "")
+        rec["ce_repeat_offender"] = str(c.get("repeatoffenderrelated", "")).lower() in ("true", "yes", "1")
+        rec["ce_opened_date"]     = c.get("opened_date", "")[:10]
+        rec["flags"].append("CODE ENFORCE")
+        if rec["ce_repeat_offender"]:
+            rec["flags"].append("REPEAT OFFENDER")
+
+        new_leads.append(rec)
+
+    log.info(f"Austin Code Enforcement: {len(new_leads)} new leads")
+    return new_leads
+
+
+# ── SCORING ───────────────────────────────────────────────────────────────────
+def score_record(rec):
+    s = 0
+    if rec.get("address"):  s += 2
+    if rec.get("owner"):    s += 2
+    if rec.get("type") in ("NOF", "APPT"): s += 3
+    if rec.get("sale_date"): s = min(s + 2, 10)
+    if rec.get("prop_id"): s = min(s + 1, 10)
+    stacked = len(rec.get("stacked_liens") or [])
+    if stacked >= 2:
+        s = min(s + 2, 10)
+    if rec.get("source") == "code_enforcement":
+        s += 1
+        if str(rec.get("ce_status", "")).lower() == "active": s += 1
+        if rec.get("ce_repeat_offender"): s += 1
+    return min(s, 10)
+
+
+# ── MERGE / DEDUP / PURGE ───────────────────────────────────────────────────
+def load_existing():
+    if RECORDS_PATH.exists():
+        try:
+            return json.loads(RECORDS_PATH.read_text(encoding="utf-8"))
+        except Exception as e:
+            log.warning(f"Could not load existing records.json: {e}")
+    return []
+
+
+def purge_past_auctions(records):
+    keep = []
+    purged = 0
+    for r in records:
+        if r.get("type") in ("NOF",) and r.get("sale_date"):
+            if auction_passed(r["sale_date"]) and not (r.get("dash_phone") or r.get("ghl_pushed")):
+                purged += 1
+                continue
+        keep.append(r)
+    if purged:
+        log.info(f"Purged {purged} past-auction leads")
+    return keep
+
+
+def stack_liens(records):
+    """
+    Flag leads sharing the same owner+address across multiple doc types as
+    'stacked' — the strongest single motivation signal per competitor
+    research (see CLAUDE.md). Groups by (owner, address); anything with
+    2+ distinct doc types gets stacked_liens populated on every member.
+    """
+    groups = {}
+    for r in records:
+        key = (r.get("owner", "").upper().strip(), r.get("address", "").upper().strip())
+        if not key[0] or not key[1]:
+            continue
+        groups.setdefault(key, set()).add(r.get("type", ""))
+
+    for r in records:
+        key = (r.get("owner", "").upper().strip(), r.get("address", "").upper().strip())
+        types = groups.get(key, set())
+        if len(types) >= 2:
+            r["stacked_liens"] = sorted(types)
+            if "STACKED" not in r["flags"]:
+                r["flags"].append("STACKED")
+
+
+# ── DASHBOARD ─────────────────────────────────────────────────────────────────
+def build_dashboard(records):
+    os.makedirs("dashboard", exist_ok=True)
+    clean = [{k: v for k, v in r.items() if not k.startswith("_")} for r in records]
+    json_str = json.dumps(clean, separators=(",", ":"), ensure_ascii=True)
+    with open("dashboard/records.json", "w", encoding="utf-8") as f:
+        f.write(json_str)
+    log.info(f"Dashboard: {len(clean)} records, {os.path.getsize('dashboard/records.json'):,} bytes")
+
+
+# ── MAIN ──────────────────────────────────────────────────────────────────────
+def main():
+    log.info("=" * 60)
+    log.info("Travis County Lead Scraper v1.0")
+    log.info(f"Run: {RUN_TIMESTAMP}")
+    log.info("=" * 60)
+
+    existing = load_existing()
+    for r in existing:
+        r["is_new"] = False
+    known_docs = {r["doc_number"] for r in existing if r.get("doc_number")}
+    log.info(f"Loaded {len(existing)} existing records | {len(known_docs)} known doc numbers")
+
+    driver = get_driver()
+    all_new = []
+    try:
+        accept_disclaimer(driver)
+        for code, lead_type in DOC_TYPES.items():
+            try:
+                leads = scrape_tccsearch(known_docs, driver, code, lead_type)
+                all_new.extend(leads)
+            except Exception as e:
+                log.error(f"scrape_tccsearch error for {code}: {e}", exc_info=True)
+            # fresh search entry for the next doc type
+            accept_disclaimer(driver)
+    finally:
+        try:
+            driver.quit()
+        except Exception:
+            pass
+
+    log.info(f"tccsearch.org total new: {len(all_new)}")
+
+    # TCAD enrichment — cap per run to avoid hammering the ArcGIS endpoint
+    enrich_targets = [r for r in all_new if r["type"] in ("NOF", "APPT") and r.get("owner")][:60]
+    log.info(f"TCAD enrichment: {len(enrich_targets)} candidates")
+    for r in enrich_targets:
+        try:
+            enrich_from_tcad(r)
+        except Exception as e:
+            log.debug(f"TCAD enrich error [{r['doc_number']}]: {e}")
+        time.sleep(0.3)
+
+    ce_leads = fetch_code_enforcement(known_docs)
+    all_new.extend(ce_leads)
+
+    all_records = existing + all_new
+    all_records = purge_past_auctions(all_records)
+    stack_liens(all_records)
+
+    before = len(all_records)
+    all_records = [
+        r for r in all_records
+        if r.get("type") in ("CE", "APPT")
+        or r.get("ghl_pushed") or r.get("dash_phone")
+        or filed_within_window(r.get("date_filed", ""), SCRAPE_DAYS)
+    ]
+    log.info(f"{SCRAPE_DAYS}d filter: {before} -> {len(all_records)}")
+
+    for r in all_records:
+        r["score"] = score_record(r)
+        r["days_until_sale"] = days_until_sale(r.get("sale_date", ""))
+
+    def sort_key(r):
+        d = r.get("days_until_sale")
+        urgency = 0 if (d is not None and d <= 14) else (1 if (d is not None and d <= 30) else 2)
+        return (urgency, -r["score"], d if d is not None else 9999)
+
+    all_records.sort(key=sort_key)
+
+    total    = len(all_records)
+    new_ct   = sum(1 for r in all_records if r.get("is_new"))
+    nof_ct   = sum(1 for r in all_records if r.get("type") == "NOF")
+    stacked  = sum(1 for r in all_records if r.get("stacked_liens"))
+    ce_ct    = sum(1 for r in all_records if r.get("type") == "CE")
+    enriched = sum(1 for r in all_records if r.get("prop_id"))
+
+    log.info(f"Final: {total} total | {new_ct} new | NOF={nof_ct} | CE={ce_ct}")
+    log.info(f"       Stacked (2+ lien types): {stacked} | TCAD parcel-matched: {enriched}")
+
+    DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
+    DATA_PATH.write_text(json.dumps(all_records, indent=2), encoding="utf-8")
+    build_dashboard(all_records)
+    log.info("Done.")
+
+
+if __name__ == "__main__":
+    main()

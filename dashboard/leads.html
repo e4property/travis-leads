@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Travis Leads</title>
+<style>
+  :root {
+    --bg: #0b0d12; --panel: #12151c; --panel2: #171b24; --border: #232836;
+    --text: #e7e9ee; --sub: #8b93a7; --accent: #4f8cff; --green: #33c17a;
+    --amber: #e0a939; --red: #e2564f; --purple: #a06ee1;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family: -apple-system, Segoe UI, Roboto, sans-serif; }
+  header { display:flex; align-items:center; gap:20px; padding:14px 20px; border-bottom:1px solid var(--border); background:var(--panel); }
+  header h1 { font-size:18px; margin:0; letter-spacing:0.5px; }
+  header .stat { font-size:13px; color:var(--sub); }
+  header .stat b { color:var(--text); }
+  .layout { display:grid; grid-template-columns: 220px 380px 1fr; height: calc(100vh - 57px); }
+  nav { border-right:1px solid var(--border); padding:14px; overflow-y:auto; }
+  nav .grp { font-size:11px; text-transform:uppercase; color:var(--sub); margin:16px 0 6px; letter-spacing:0.5px; }
+  nav .item { display:flex; justify-content:space-between; padding:7px 10px; border-radius:6px; cursor:pointer; font-size:13px; }
+  nav .item:hover { background:var(--panel2); }
+  nav .item.active { background:var(--accent); color:white; }
+  nav .item .n { color:var(--sub); font-size:12px; }
+  nav .item.active .n { color:rgba(255,255,255,0.8); }
+  .list { border-right:1px solid var(--border); overflow-y:auto; }
+  .searchbar { padding:12px; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg); }
+  .searchbar input { width:100%; padding:8px 10px; border-radius:6px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-size:13px; }
+  .row { padding:12px 14px; border-bottom:1px solid var(--border); cursor:pointer; }
+  .row:hover { background:var(--panel); }
+  .row.sel { background:var(--panel2); border-left:3px solid var(--accent); }
+  .row .top { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .row .name { font-weight:600; font-size:14px; }
+  .row .score { font-size:12px; font-weight:700; padding:2px 7px; border-radius:10px; }
+  .row .addr { color:var(--sub); font-size:12px; margin-top:2px; }
+  .row .tags { margin-top:6px; display:flex; gap:5px; flex-wrap:wrap; }
+  .tag { font-size:10px; padding:2px 6px; border-radius:4px; background:var(--panel2); color:var(--sub); border:1px solid var(--border); }
+  .tag.type { color:white; }
+  .tag.stacked { background:var(--purple); color:white; border:none; }
+  .detail { padding:24px; overflow-y:auto; }
+  .detail h2 { margin:0 0 4px; font-size:22px; }
+  .detail .sub { color:var(--sub); font-size:14px; margin-bottom:16px; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px; margin-bottom:14px; }
+  .card h3 { margin:0 0 12px; font-size:13px; text-transform:uppercase; letter-spacing:0.5px; color:var(--sub); }
+  .grid4 { display:grid; grid-template-columns: repeat(4,1fr); gap:12px; }
+  .metric { background:var(--panel2); border-radius:8px; padding:10px 12px; }
+  .metric .v { font-size:18px; font-weight:700; }
+  .metric .l { font-size:11px; color:var(--sub); text-transform:uppercase; }
+  .lien-row { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border); font-size:13px; }
+  .lien-row:last-child { border-bottom:none; }
+  .lien-row .amt { font-weight:600; }
+  .empty { display:flex; align-items:center; justify-content:center; height:100%; color:var(--sub); font-size:14px; }
+  a.link { color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>TRAVIS&middot;LEADS</h1>
+  <div class="stat">Total <b id="statTotal">0</b></div>
+  <div class="stat">Stacked <b id="statStacked">0</b></div>
+  <div class="stat">CE <b id="statCE">0</b></div>
+  <div class="stat" style="margin-left:auto">Updated <b id="statUpdated">-</b></div>
+</header>
+<div class="layout">
+  <nav id="nav"></nav>
+  <div class="list">
+    <div class="searchbar"><input id="search" placeholder="Name, address, zip..."/></div>
+    <div id="rows"></div>
+  </div>
+  <div class="detail" id="detail"><div class="empty">Select a lead</div></div>
+</div>
+
+<script>
+const TYPE_COLOR = {
+  NOF: '#e2564f', APPT: '#e0a939', LP: '#4f8cff', JUD: '#a06ee1',
+  LNFED: '#33c17a', LNSTATE: '#33c17a', LNMECH: '#33c17a', LNHOA: '#33c17a', CE: '#8b93a7',
+};
+
+let RECORDS = [];
+let filtered = [];
+let selected = null;
+let currentFilter = 'all';
+
+fetch('records.json?t=' + Date.now()).then(r => r.json()).then(data => {
+  RECORDS = data;
+  render();
+}).catch(e => {
+  document.getElementById('rows').innerHTML = '<div class="empty">No records.json yet — run the scraper.</div>';
+});
+
+function fmtMoney(v) {
+  if (v === '' || v === null || v === undefined) return '—';
+  const n = typeof v === 'number' ? v : parseFloat(String(v).replace(/[^0-9.]/g, ''));
+  if (isNaN(n)) return '—';
+  return '$' + n.toLocaleString(undefined, {maximumFractionDigits: 0});
+}
+
+function buildNav() {
+  const counts = {};
+  RECORDS.forEach(r => { counts[r.type] = (counts[r.type]||0) + 1; });
+  const stacked = RECORDS.filter(r => (r.stacked_liens||[]).length >= 2).length;
+  const groups = [
+    {label:'All Leads', key:'all', n: RECORDS.length},
+    {label:'Stacked (2+)', key:'stacked', n: stacked},
+    {label:'Foreclosure (NOF)', key:'NOF', n: counts.NOF||0},
+    {label:'Pre-Fore (APPT)', key:'APPT', n: counts.APPT||0},
+    {label:'Lis Pendens', key:'LP', n: counts.LP||0},
+    {label:'Judgments', key:'JUD', n: counts.JUD||0},
+    {label:'Tax Liens', key:'LNFED', n: (counts.LNFED||0)+(counts.LNSTATE||0)},
+    {label:'Mechanics Liens', key:'LNMECH', n: counts.LNMECH||0},
+    {label:'HOA Liens', key:'LNHOA', n: counts.LNHOA||0},
+    {label:'Code Enforcement', key:'CE', n: counts.CE||0},
+  ];
+  const nav = document.getElementById('nav');
+  nav.innerHTML = '<div class="grp">Filter</div>' + groups.map(g =>
+    `<div class="item ${g.key===currentFilter?'active':''}" data-key="${g.key}">
+       <span>${g.label}</span><span class="n">${g.n}</span></div>`
+  ).join('');
+  nav.querySelectorAll('.item').forEach(el => {
+    el.onclick = () => { currentFilter = el.dataset.key; render(); };
+  });
+}
+
+function applyFilter() {
+  let list = RECORDS;
+  if (currentFilter === 'stacked') list = list.filter(r => (r.stacked_liens||[]).length >= 2);
+  else if (currentFilter !== 'all') list = list.filter(r => r.type === currentFilter ||
+      (currentFilter==='LNFED' && (r.type==='LNFED'||r.type==='LNSTATE')));
+  const q = (document.getElementById('search').value||'').toUpperCase().trim();
+  if (q) list = list.filter(r => (r.owner||'').toUpperCase().includes(q) ||
+      (r.address||'').toUpperCase().includes(q) || (r.zip||'').includes(q));
+  return list.sort((a,b) => (b.score||0) - (a.score||0));
+}
+
+function scoreColor(s) {
+  if (s >= 8) return 'background:var(--red);color:white';
+  if (s >= 5) return 'background:var(--amber);color:#1a1a1a';
+  return 'background:var(--panel2);color:var(--sub)';
+}
+
+function renderRows() {
+  filtered = applyFilter();
+  const rowsEl = document.getElementById('rows');
+  if (!filtered.length) { rowsEl.innerHTML = '<div class="empty">No leads match</div>'; return; }
+  rowsEl.innerHTML = filtered.map((r,i) => {
+    const stacked = (r.stacked_liens||[]).length >= 2;
+    return `<div class="row ${selected===r.doc_number?'sel':''}" data-doc="${r.doc_number}">
+      <div class="top">
+        <span class="name">${r.owner || '(no name)'}</span>
+        <span class="score" style="${scoreColor(r.score||0)}">${r.score||0}</span>
+      </div>
+      <div class="addr">${r.address || r.legal_desc || 'No address'} ${r.zip?('· '+r.zip):''}</div>
+      <div class="tags">
+        <span class="tag type" style="background:${TYPE_COLOR[r.type]||'#555'}">${r.type}</span>
+        ${r.sale_date?`<span class="tag">Sale ${r.sale_date}</span>`:''}
+        ${stacked?'<span class="tag stacked">STACKED</span>':''}
+        ${r.ce_repeat_offender?'<span class="tag">REPEAT</span>':''}
+      </div>
+    </div>`;
+  }).join('');
+  rowsEl.querySelectorAll('.row').forEach(el => {
+    el.onclick = () => { selected = el.dataset.doc; render(); };
+  });
+}
+
+function renderDetail() {
+  const d = document.getElementById('detail');
+  const r = RECORDS.find(x => x.doc_number === selected);
+  if (!r) { d.innerHTML = '<div class="empty">Select a lead</div>'; return; }
+
+  const liens = [
+    ['Mortgage balance (est.)', r.mortgage_balance_est],
+    ['Tax delinquent', r.tax_delinquent_amt],
+    ['Judgment', r.judgment_amt],
+    ['HOA lien', r.hoa_lien_amt],
+    ['Mechanics lien', r.mechanics_lien_amt],
+    ['Other lien', r.other_lien_amt],
+  ].filter(([,v]) => v !== '' && v !== null && v !== undefined);
+
+  d.innerHTML = `
+    <h2>${r.owner || '(no name)'}</h2>
+    <div class="sub">${r.address || r.legal_desc || 'No address'} ${r.city?(', '+r.city+' TX'):''} ${r.zip||''}
+      &nbsp;&middot;&nbsp; Doc: ${r.doc_number} &middot; Filed: ${r.date_filed||'—'}
+      ${r.sale_date?(' · Sale: '+r.sale_date):''}</div>
+
+    <div class="card">
+      <h3>Financial Intel</h3>
+      <div class="grid4">
+        <div class="metric"><div class="v">${fmtMoney(r.equity_est)}</div><div class="l">Value est.</div></div>
+        <div class="metric"><div class="v">${r.score||0}/10</div><div class="l">Score</div></div>
+        <div class="metric"><div class="v">${(r.stacked_liens||[]).length || 0}</div><div class="l">Stacked liens</div></div>
+        <div class="metric"><div class="v">${r.days_until_sale ?? '—'}</div><div class="l">Days to sale</div></div>
+      </div>
+      ${liens.length ? `<div style="margin-top:14px">${liens.map(([l,v]) =>
+        `<div class="lien-row"><span>${l}</span><span class="amt">${fmtMoney(v)}</span></div>`).join('')}</div>`
+        : '<div style="margin-top:12px;color:var(--sub);font-size:13px">No lien $ amounts scraped yet for this lead — dollar figures require per-document detail lookup, not yet built. Stacked doc types below are known.</div>'}
+      ${(r.stacked_liens||[]).length ? `<div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+        ${r.stacked_liens.map(t=>`<span class="tag" style="background:${TYPE_COLOR[t]||'#555'};color:white;border:none">${t}</span>`).join('')}
+      </div>` : ''}
+    </div>
+
+    <div class="card">
+      <h3>Property / Parcel</h3>
+      <div class="grid4">
+        <div class="metric"><div class="v">${r.prop_id || '—'}</div><div class="l">TCAD Prop ID</div></div>
+        <div class="metric"><div class="v">${r.status_index || '—'}</div><div class="l">Index status</div></div>
+        <div class="metric"><div class="v">${r.type}</div><div class="l">Lead type</div></div>
+        <div class="metric"><div class="v">${r.county||'travis'}</div><div class="l">County</div></div>
+      </div>
+      <div style="margin-top:12px;color:var(--sub);font-size:13px">${r.legal_desc || 'No legal description'}</div>
+    </div>
+
+    ${r.type === 'CE' ? `
+    <div class="card">
+      <h3>Code Enforcement</h3>
+      <div class="grid4">
+        <div class="metric"><div class="v">${r.ce_status || '—'}</div><div class="l">Status</div></div>
+        <div class="metric"><div class="v">${r.ce_priority || '—'}</div><div class="l">Priority</div></div>
+        <div class="metric"><div class="v">${r.ce_repeat_offender ? 'Yes' : 'No'}</div><div class="l">Repeat offender</div></div>
+        <div class="metric"><div class="v">${r.ce_opened_date || '—'}</div><div class="l">Opened</div></div>
+      </div>
+      <div style="margin-top:12px;color:var(--sub);font-size:13px">${r.ce_case_type || ''}</div>
+    </div>` : ''}
+
+    <div class="card">
+      <h3>Notes</h3>
+      <textarea style="width:100%;min-height:70px;background:var(--panel2);border:1px solid var(--border);
+        border-radius:6px;color:var(--text);padding:8px;font-size:13px" placeholder="Add notes...">${r.dash_notes||''}</textarea>
+    </div>
+  `;
+}
+
+function render() {
+  buildNav();
+  renderRows();
+  renderDetail();
+  document.getElementById('statTotal').textContent = RECORDS.length;
+  document.getElementById('statStacked').textContent = RECORDS.filter(r => (r.stacked_liens||[]).length>=2).length;
+  document.getElementById('statCE').textContent = RECORDS.filter(r => r.type==='CE').length;
+  document.getElementById('statUpdated').textContent = new Date().toLocaleTimeString();
+}
+
+document.getElementById('search').addEventListener('input', renderRows);
+</script>
+</body>
+</html>

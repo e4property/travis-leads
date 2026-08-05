@@ -1,0 +1,62 @@
+name: Scrape and Deploy
+
+on:
+  schedule:
+    - cron: '0 15 * * *'
+    - cron: '0 20 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests selenium webdriver-manager
+
+      - name: Run python scraper/fetch.py
+        run: python scraper/fetch.py
+
+      - name: Commit records
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dashboard/records.json data/records.json
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: update leads $(date -u +'%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3 4 5; do
+            sleep $((RANDOM % 10 + 2))
+            git fetch origin main
+            git rebase -X theirs origin/main || git rebase --abort
+            git push origin main && echo "Push succeeded" && break
+            echo "Attempt $i failed, retrying..."
+          done
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dashboard/
+
+      - uses: actions/deploy-pages@v4
