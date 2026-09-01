@@ -145,6 +145,8 @@ def new_record(doc_number, lead_type, source="tccsearch", run_ts=None):
         "legal_desc":          "",
         "status_index":        "",   # Temp | Perm (tccsearch temp/permanent index)
         "global_id":           "",   # tccsearch detail-page id
+        "trustee":             "",   # substitute trustee conducting the sale (NOT the owner)
+        "lender":              "",   # servicer/lender named on the notice
         "absentee":            False,
         "is_entity":           False,
         "duplicate":           False,
@@ -298,6 +300,137 @@ def goto_results_page(driver, page_num):
     return ok
 
 
+# ── DOCUMENT DETAIL (real owner) ────────────────────────────────────────────
+# 2026-09-01: the search-RESULTS index's "[R]" name -- what this scraper
+# used to treat as "owner" -- is actually the substitute TRUSTEE, not the
+# homeowner. Confirmed live: searching Party Name = "ZAVALA ANGELA" (the
+# most common "[R]" name in a live pull) returned the SAME 300-record
+# total as the unfiltered doc-type search -- she's the trustee handling
+# nearly the entire foreclosure docket for multiple lenders, not one
+# homeowner in 300 places. Opening an actual document detail page shows
+# the real structure: a "Lender/Trustee" section (trustee name, lender
+# company) and a completely separate "Sale Date/Owner" section (sale
+# date, then the real owner's name) -- confirmed against doc 202641153:
+# [R] index said "ZAVALA ANGELA"; the detail page's Sale Date/Owner said
+# "KIMBROUGH DEWAYNE". Real text, not an image -- no OCR needed, unlike
+# Bexar's equivalent per-document enrichment.
+DETAIL_INSTNUM_RE = re.compile(r"Instrument #:\t(\d+)")
+DETAIL_OWNER_RE    = re.compile(r"Sale Date/Owner\s*\n+1\t[^\n]*\n2\t([^\n\t]+)")
+DETAIL_TRUSTEE_RE  = re.compile(r"Lender/Trustee\s*\n+1\t([^\n\t]+)\t[^\n]*\n2\t([^\n\t]+)")
+
+
+def _clean_name(s):
+    return " ".join((s or "").split()).title()
+
+
+def click_doc_detail(driver, doc_number, timeout=15):
+    """From a results LIST page, click the row link for doc_number and
+    land on its detail page. Returns True/False."""
+    from selenium.webdriver.support.ui import WebDriverWait
+    clicked = driver.execute_script("""
+        var docNum = arguments[0];
+        var links = document.querySelectorAll('a');
+        for (var i = 0; i < links.length; i++) {
+            if (links[i].textContent.trim() === docNum) { links[i].click(); return true; }
+        }
+        return false;
+    """, doc_number)
+    if not clicked:
+        log.warning(f"  click_doc_detail: no row link found for {doc_number}")
+        return False
+    try:
+        WebDriverWait(driver, timeout).until(
+            lambda d: "Sale Date/Owner" in d.find_element("tag name", "body").text
+        )
+        return True
+    except Exception:
+        log.warning(f"  click_doc_detail: detail page never showed Sale Date/Owner for {doc_number} | {_page_diag(driver)}")
+        return False
+
+
+def jump_detail_index(driver, idx, timeout=15):
+    """From a document detail page, jump to a different document at
+    position idx (0-based) within the SAME results page via the
+    within-page item dropdown -- avoids a full back-to-list round trip
+    per document. Returns True/False."""
+    from selenium.webdriver.support.ui import WebDriverWait
+    try:
+        before = driver.execute_script("return document.body.innerText;")
+    except Exception:
+        before = ""
+    ok = driver.execute_script("""
+        var n = arguments[0];
+        var sel = document.getElementById('cphNoMargin_OptionsBar1_ItemList');
+        if (!sel || n >= sel.options.length) return false;
+        sel.selectedIndex = n;
+        if (typeof itemChange === 'function') { itemChange(sel); }
+        sel.dispatchEvent(new Event('change', {bubbles:true}));
+        return true;
+    """, idx)
+    if not ok:
+        return False
+    try:
+        WebDriverWait(driver, timeout).until(
+            lambda d: d.execute_script("return document.body.innerText;") != before
+        )
+        return True
+    except Exception:
+        log.warning(f"  jump_detail_index: page content didn't change for index {idx}")
+        return False
+
+
+def extract_detail_fields(driver):
+    from selenium.webdriver.common.by import By
+    body_text = driver.find_element(By.TAG_NAME, "body").text
+    result = {"instrument": "", "owner": "", "trustee": "", "lender": ""}
+    m = DETAIL_INSTNUM_RE.search(body_text)
+    if m:
+        result["instrument"] = m.group(1).strip()
+    m = DETAIL_OWNER_RE.search(body_text)
+    if m:
+        result["owner"] = _clean_name(m.group(1))
+    m = DETAIL_TRUSTEE_RE.search(body_text)
+    if m:
+        result["trustee"] = _clean_name(m.group(1))
+        result["lender"]  = _clean_name(m.group(2))
+    if not result["owner"]:
+        log.warning(f"  extract_detail_fields: no owner matched | body snippet: {body_text[:300]!r}")
+    return result
+
+
+def fetch_real_owners(driver, rows):
+    """Given the rows parsed off a single results-list page (in the same
+    top-to-bottom order the page displayed them), visit each one's detail
+    page and replace the index's trustee-as-owner with the real owner.
+    Mutates `rows` in place. Matches results back to rows by instrument
+    number (not by position) so this is correct even if the within-page
+    dropdown's ordering doesn't exactly mirror the list's ordering.
+    """
+    by_doc = {r["doc_number"]: r for r in rows}
+    if not rows:
+        return
+
+    if not click_doc_detail(driver, rows[0]["doc_number"]):
+        log.warning("  fetch_real_owners: could not open first detail page for this page — "
+                    "leaving trustee names as owner for this page's rows")
+        return
+
+    for i in range(len(rows)):
+        if i > 0:
+            if not jump_detail_index(driver, i):
+                continue
+        details = extract_detail_fields(driver)
+        rec = by_doc.get(details["instrument"])
+        if not rec:
+            log.warning(f"  fetch_real_owners: detail instrument {details['instrument']!r} "
+                        f"didn't match any row on this page")
+            continue
+        if details["owner"]:
+            rec["owner"] = details["owner"]
+        rec["trustee"] = details["trustee"]
+        rec["lender"]  = details["lender"]
+
+
 def parse_results_page(driver, debug_label=""):
     from selenium.webdriver.common.by import By
     body_text = driver.find_element(By.TAG_NAME, "body").text
@@ -368,6 +501,23 @@ def scrape_tccsearch(known_docs, driver, doc_code, lead_type):
             log.info(f"  Page {page}: 0 rows — stopping")
             break
 
+        new_rows = [r for r in rows if r["doc_number"] not in known_docs]
+        if new_rows:
+            # row["owner"] up to this point is the search-index's [R] name,
+            # which is the substitute TRUSTEE, not the homeowner (see the
+            # v2.0 note above fetch_real_owners). Overwrite it with the
+            # real owner from each document's own detail page before
+            # building records. Leaves the working tree on a results LIST
+            # page again (any page — goto_results_page() below sets the
+            # target page by value, not relatively) once done.
+            fetch_real_owners(driver, new_rows)
+            driver.execute_script("""
+                var a = Array.from(document.querySelectorAll('a'))
+                    .find(a => a.textContent.trim() === 'Back to Results');
+                if (a) a.click();
+            """)
+            time.sleep(1.5)
+
         page_new = 0
         for row in rows:
             doc_num = row["doc_number"]
@@ -378,6 +528,8 @@ def scrape_tccsearch(known_docs, driver, doc_code, lead_type):
 
             rec = new_record(doc_num, lead_type)
             rec["owner"]        = row["owner"]
+            rec["trustee"]      = row.get("trustee", "")
+            rec["lender"]       = row.get("lender", "")
             rec["date_filed"]   = row["date_filed"]
             rec["sale_date"]    = row["sale_date"]
             rec["legal_desc"]   = row["legal_desc"]
