@@ -52,6 +52,31 @@
   .lien-row .amt { font-weight:600; }
   .empty { display:flex; align-items:center; justify-content:center; height:100%; color:var(--sub); font-size:14px; }
   a.link { color: var(--accent); }
+  .field-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
+  .field-row label { display:block; font-size:11px; text-transform:uppercase; color:var(--sub); margin-bottom:4px; }
+  .field-row input { width:100%; padding:7px 9px; border-radius:6px; border:1px solid var(--border); background:var(--panel2); color:var(--text); font-size:13px; }
+  .save-btn { width:100%; padding:10px; border:none; border-radius:8px; background:var(--accent); color:white; font-weight:600; font-size:14px; cursor:pointer; margin-top:6px; }
+  .save-btn:hover { opacity:0.9; }
+  .save-btn:disabled { opacity:0.5; cursor:default; }
+  .ghl-badge { display:inline-flex; align-items:center; gap:5px; font-size:11px; padding:3px 8px; border-radius:10px; font-weight:600; }
+  .ghl-badge.ok { background:rgba(51,193,122,0.15); color:var(--green); }
+  .ghl-badge.no { background:var(--panel2); color:var(--sub); }
+  .toast { position:fixed; bottom:20px; right:20px; padding:12px 18px; border-radius:8px; background:#1a1e28; border:1px solid var(--border); font-size:13px; max-width:380px; box-shadow:0 4px 20px rgba(0,0,0,0.4); z-index:50; opacity:0; transform:translateY(8px); transition:all 0.2s; }
+  .toast.show { opacity:1; transform:translateY(0); }
+  .toast.err { border-color:var(--red); color:#ffb4b0; }
+  .toast.ok { border-color:var(--green); color:#a6f0c6; }
+  .gear-btn { margin-left:auto; background:none; border:1px solid var(--border); color:var(--sub); border-radius:6px; padding:5px 10px; cursor:pointer; font-size:12px; }
+  .gear-btn:hover { color:var(--text); border-color:var(--accent); }
+  .modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:60; align-items:center; justify-content:center; }
+  .modal-bg.open { display:flex; }
+  .modal { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:22px; width:420px; }
+  .modal h3 { margin:0 0 14px; }
+  .modal label { display:block; font-size:12px; color:var(--sub); margin:10px 0 4px; }
+  .modal input { width:100%; padding:8px 10px; border-radius:6px; border:1px solid var(--border); background:var(--panel2); color:var(--text); font-size:13px; }
+  .modal .btns { display:flex; gap:8px; margin-top:18px; }
+  .modal .btns button { flex:1; padding:9px; border-radius:6px; border:none; cursor:pointer; font-size:13px; }
+  .modal .btn-save { background:var(--accent); color:white; }
+  .modal .btn-cancel { background:var(--panel2); color:var(--text); }
 </style>
 </head>
 <body>
@@ -60,8 +85,25 @@
   <div class="stat">Total <b id="statTotal">0</b></div>
   <div class="stat">Stacked <b id="statStacked">0</b></div>
   <div class="stat">CE <b id="statCE">0</b></div>
-  <div class="stat" style="margin-left:auto">Updated <b id="statUpdated">-</b></div>
+  <div class="stat">In Jarvis <b id="statPushed">0</b></div>
+  <button class="gear-btn" style="margin-left:auto" onclick="openSettings()">&#9881; Settings</button>
+  <div class="stat">Updated <b id="statUpdated">-</b></div>
 </header>
+
+<div class="modal-bg" id="settings-modal">
+  <div class="modal">
+    <h3>Jarvis / GHL Settings</h3>
+    <label>GHL API Key (Private Integration token)</label>
+    <input id="set-apikey" type="password" placeholder="pit-..."/>
+    <label>GHL Location ID</label>
+    <input id="set-locid"/>
+    <div class="btns">
+      <button class="btn-cancel" onclick="closeSettings()">Cancel</button>
+      <button class="btn-save" onclick="saveSettings()">Save</button>
+    </div>
+  </div>
+</div>
+<div id="toast-host"></div>
 <div class="layout">
   <nav id="nav"></nav>
   <div class="list">
@@ -76,6 +118,145 @@ const TYPE_COLOR = {
   NOF: '#e2564f', APPT: '#e0a939', LP: '#4f8cff', JUD: '#a06ee1',
   LNFED: '#33c17a', LNSTATE: '#33c17a', LNMECH: '#33c17a', LNHOA: '#33c17a', CE: '#8b93a7',
 };
+
+// ── Jarvis/GHL push ─────────────────────────────────────────────────────────
+// 2026-09-01: this whole block is ported from bexar-leads' pushGHL(), which
+// carries three hard-won safety guards from real incidents this summer --
+// kept intact rather than rebuilt from scratch: (1) block push on missing
+// first name or address (a contact with blank merge-tag data still gets a
+// broken SMS if enrolled in a workflow later), (2) block push if the owner
+// field looks like a placeholder string ("not stated in notice", etc.)
+// instead of a real name, (3) block push if this exact address already has
+// a Jarvis contact under a different lead, even a different county's.
+// Deliberately NOT reusing Bexar's tag names (bexar_lead, bexar_nof, etc.)
+// -- those are wired to Bexar-specific SMS workflows in Jarvis; a Travis
+// lead tagged that way would silently enter the wrong automation with the
+// wrong message content. Uses travis_* tags instead -- no SMS workflow is
+// wired to them yet, so pushing creates a correctly-tagged Jarvis contact
+// but won't auto-text until a Travis-specific workflow is built (a
+// separate, not-yet-requested task).
+let S = {ghlApiKey:'', ghlLocationId:'UAOJlgeerLu3GChP9jDJ', leads:{}};
+try { const saved = JSON.parse(localStorage.getItem('travisLeadsState')||'{}'); Object.assign(S, saved); } catch(e){}
+
+function saveState(){ localStorage.setItem('travisLeadsState', JSON.stringify({ghlApiKey:S.ghlApiKey, ghlLocationId:S.ghlLocationId, leads:S.leads})); }
+function LS(doc){ return S.leads[doc] || {phone:'', dispo:'new', notes:'', ghlId:'', ghl_pushed:false}; }
+function setLS(doc, patch){ S.leads[doc] = Object.assign(LS(doc), patch); saveState(); }
+
+function toast(msg, isErr){
+  const host = document.getElementById('toast-host');
+  const el = document.createElement('div');
+  el.className = 'toast ' + (isErr ? 'err' : 'ok');
+  el.textContent = msg;
+  host.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('show'));
+  setTimeout(() => { el.classList.remove('show'); setTimeout(() => el.remove(), 250); }, 5000);
+}
+
+function openSettings(){
+  document.getElementById('set-apikey').value = S.ghlApiKey || '';
+  document.getElementById('set-locid').value = S.ghlLocationId || 'UAOJlgeerLu3GChP9jDJ';
+  document.getElementById('settings-modal').classList.add('open');
+}
+function closeSettings(){ document.getElementById('settings-modal').classList.remove('open'); }
+function saveSettings(){
+  S.ghlApiKey = document.getElementById('set-apikey').value.trim();
+  S.ghlLocationId = document.getElementById('set-locid').value.trim() || 'UAOJlgeerLu3GChP9jDJ';
+  saveState();
+  closeSettings();
+  toast('Settings saved');
+}
+
+function parseName(owner){
+  const parts = (owner||'').trim().split(/\s+/);
+  if (!parts.length || !parts[0]) return {first:'', last:''};
+  // county index format is "LASTNAME FIRST [MIDDLE]"
+  const last = parts[0];
+  const first = parts.slice(1).join(' ') || '';
+  return {first, last};
+}
+function toTitle(s){ return (s||'').toLowerCase().replace(/\b\w/g, c => c.toUpperCase()); }
+
+async function pushGHL(lead){
+  try {
+    const firstInput = document.getElementById('sf-first');
+    const lastInput = document.getElementById('sf-last');
+    const addressInput = document.getElementById('sf-address');
+    const cityInput = document.getElementById('sf-city');
+    const zipInput = document.getElementById('sf-zip');
+    const phoneInput = document.getElementById('sf-phone');
+    const first = (firstInput && firstInput.value.trim()) || '';
+    const last  = (lastInput && lastInput.value.trim()) || '';
+    const addrTitle = (addressInput && addressInput.value.trim()) || '';
+    const cityTitle = (cityInput && cityInput.value.trim()) || '';
+    const zipVal = (zipInput && zipInput.value.trim()) || '';
+    const phone = (phoneInput && phoneInput.value.trim()) || '';
+
+    if (!S.ghlApiKey) { toast('Set your GHL API key in Settings first', true); return null; }
+    if (!phone) { toast('Enter a phone number before pushing to Jarvis', true); return null; }
+    if (!first.trim() || !addrTitle.trim()) {
+      const missing = [!first.trim() && 'first name', !addrTitle.trim() && 'address'].filter(Boolean).join(' and ');
+      toast(`Blocked push — missing ${missing}. Fill in the First/Address field(s) before saving.`, true);
+      return null;
+    }
+    const PLACEHOLDER_OWNER_RE = /not stated|not captured|not found|not available|unknown owner|n\/a/i;
+    if (PLACEHOLDER_OWNER_RE.test(lead.owner||'')) {
+      toast(`Blocked push — this lead's owner name looks like a placeholder ("${(lead.owner||'').slice(0,60)}"), not a real name. Verify the real owner before pushing.`, true);
+      return null;
+    }
+
+    try {
+      const normAddr = s => (s||'').toUpperCase().replace(/[.,#]/g,' ').replace(/\s+/g,' ').trim().replace(/\b(APT|UNIT|STE|SUITE)\b.*$/,'').trim();
+      const targetAddr = normAddr(addrTitle);
+      if (targetAddr) {
+        const qName = encodeURIComponent(last || first);
+        const dupRes = await fetch(`https://services.leadconnectorhq.com/contacts/?locationId=${S.ghlLocationId}&limit=20&query=${qName}`,
+          {headers:{'Authorization':'Bearer '+S.ghlApiKey,'Version':'2021-07-28','Accept':'application/json'}});
+        if (dupRes.ok) {
+          const dupData = await dupRes.json();
+          const dup = (dupData.contacts||[]).find(c => normAddr(c.address1) === targetAddr);
+          if (dup) {
+            toast(`Blocked push — ${targetAddr} already in Jarvis as "${dup.contactName||(dup.firstName+' '+dup.lastName)}" (added ${dup.dateAdded ? new Date(dup.dateAdded).toLocaleDateString() : '—'}). Open that contact instead.`, true);
+            return null;
+          }
+        }
+      }
+    } catch(e) { /* dedupe check is best-effort */ }
+
+    const tags = ['travis_lead'];
+    if (lead.type === 'APPT') tags.push('travis_prefore');
+    else if (lead.type === 'NOF') tags.push('travis_nof');
+    else if (lead.type === 'CE') tags.push('travis_ce');
+    else tags.push('travis_' + (lead.type||'other').toLowerCase());
+    if (lead.absentee) tags.push('absentee');
+    if (lead.is_new) tags.push('new_lead');
+
+    const body = {firstName:first, lastName:last||addrTitle, phone, address1:addrTitle, city:cityTitle||'Austin', state:'TX', postalCode:zipVal, tags, locationId:S.ghlLocationId, source:'travis-leads'};
+    const res = await fetch('https://services.leadconnectorhq.com/contacts/', {
+      method:'POST', headers:{'Authorization':'Bearer '+S.ghlApiKey,'Content-Type':'application/json','Version':'2021-07-28'}, body:JSON.stringify(body)
+    });
+    const data = await res.json();
+    const id = data.contact?.id || data.id;
+    if (id) {
+      setLS(lead.doc_number, {phone, ghlId:id, ghl_pushed:true, dispo:'contacted'});
+      toast('Pushed to Jarvis');
+      return id;
+    } else {
+      toast('GHL push failed: ' + (data.message || res.status), true);
+      return null;
+    }
+  } catch(e) {
+    toast('GHL push error: ' + e.message, true);
+    return null;
+  }
+}
+
+function saveLead(doc){
+  const phoneInput = document.getElementById('sf-phone');
+  const notesInput = document.getElementById('sf-notes');
+  setLS(doc, {phone:(phoneInput&&phoneInput.value.trim())||'', notes:(notesInput&&notesInput.value)||''});
+  const lead = RECORDS.find(r => r.doc_number === doc);
+  if (lead) pushGHL(lead).then(() => render());
+}
 
 let RECORDS = [];
 let filtered = [];
@@ -156,6 +337,7 @@ function renderRows() {
         ${r.sale_date?`<span class="tag">Sale ${r.sale_date}</span>`:''}
         ${stacked?'<span class="tag stacked">STACKED</span>':''}
         ${r.ce_repeat_offender?'<span class="tag">REPEAT</span>':''}
+        ${LS(r.doc_number).ghl_pushed?'<span class="tag" style="background:var(--green);color:white;border:none">JARVIS ✓</span>':''}
       </div>
     </div>`;
   }).join('');
@@ -178,11 +360,33 @@ function renderDetail() {
     ['Other lien', r.other_lien_amt],
   ].filter(([,v]) => v !== '' && v !== null && v !== undefined);
 
+  const ls = LS(r.doc_number);
+  const {first:pFirst, last:pLast} = parseName(r.owner);
+
   d.innerHTML = `
-    <h2>${r.owner || '(no name)'}</h2>
+    <h2>${r.owner || '(no name)'}
+      <span class="ghl-badge ${ls.ghl_pushed?'ok':'no'}">${ls.ghl_pushed?'In Jarvis ✓':'Not pushed'}</span>
+    </h2>
     <div class="sub">${r.address || r.legal_desc || 'No address'} ${r.city?(', '+r.city+' TX'):''} ${r.zip||''}
       &nbsp;&middot;&nbsp; Doc: ${r.doc_number} &middot; Filed: ${r.date_filed||'—'}
       ${r.sale_date?(' · Sale: '+r.sale_date):''}</div>
+
+    <div class="card">
+      <h3>Send to Jarvis</h3>
+      <div class="field-row">
+        <div><label>First Name</label><input id="sf-first" value="${pFirst}"/></div>
+        <div><label>Last Name</label><input id="sf-last" value="${pLast}"/></div>
+      </div>
+      <div class="field-row">
+        <div><label>Address</label><input id="sf-address" value="${r.address||''}"/></div>
+        <div><label>City</label><input id="sf-city" value="${r.city||'Austin'}"/></div>
+      </div>
+      <div class="field-row">
+        <div><label>Zip</label><input id="sf-zip" value="${r.zip||''}"/></div>
+        <div><label>Phone</label><input id="sf-phone" value="${ls.phone||''}" placeholder="(512) 555-0100"/></div>
+      </div>
+      <button class="save-btn" onclick="saveLead('${r.doc_number}')" ${ls.ghl_pushed?'disabled':''}>${ls.ghl_pushed?'Already in Jarvis':'Save → Jarvis'}</button>
+    </div>
 
     <div class="card">
       <h3>Financial Intel</h3>
@@ -225,8 +429,9 @@ function renderDetail() {
 
     <div class="card">
       <h3>Notes</h3>
-      <textarea style="width:100%;min-height:70px;background:var(--panel2);border:1px solid var(--border);
-        border-radius:6px;color:var(--text);padding:8px;font-size:13px" placeholder="Add notes...">${r.dash_notes||''}</textarea>
+      <textarea id="sf-notes" style="width:100%;min-height:70px;background:var(--panel2);border:1px solid var(--border);
+        border-radius:6px;color:var(--text);padding:8px;font-size:13px" placeholder="Add notes..."
+        onchange="setLS('${r.doc_number}',{notes:this.value})">${ls.notes||r.dash_notes||''}</textarea>
     </div>
   `;
 }
@@ -238,6 +443,7 @@ function render() {
   document.getElementById('statTotal').textContent = RECORDS.length;
   document.getElementById('statStacked').textContent = RECORDS.filter(r => (r.stacked_liens||[]).length>=2).length;
   document.getElementById('statCE').textContent = RECORDS.filter(r => r.type==='CE').length;
+  document.getElementById('statPushed').textContent = RECORDS.filter(r => LS(r.doc_number).ghl_pushed).length;
   document.getElementById('statUpdated').textContent = new Date().toLocaleTimeString();
 }
 
