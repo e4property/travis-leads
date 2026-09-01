@@ -314,9 +314,9 @@ def goto_results_page(driver, page_num):
 # [R] index said "ZAVALA ANGELA"; the detail page's Sale Date/Owner said
 # "KIMBROUGH DEWAYNE". Real text, not an image -- no OCR needed, unlike
 # Bexar's equivalent per-document enrichment.
-DETAIL_INSTNUM_RE = re.compile(r"Instrument #:\t(\d+)")
-DETAIL_OWNER_RE    = re.compile(r"Sale Date/Owner\s*\n+1\t[^\n]*\n2\t([^\n\t]+)")
-DETAIL_TRUSTEE_RE  = re.compile(r"Lender/Trustee\s*\n+1\t([^\n\t]+)\t[^\n]*\n2\t([^\n\t]+)")
+DETAIL_INSTNUM_RE = re.compile(r"Instrument #:[ \t]+(\d+)")
+DETAIL_OWNER_RE    = re.compile(r"Sale Date/Owner\s*\n+1[ \t]+[^\n]*\n2[ \t]+([^\n\t]+)")
+DETAIL_TRUSTEE_RE  = re.compile(r"Lender/Trustee\s*\n+1[ \t]+([^\n\t]+?)[ \t]+[^\n]*\n2[ \t]+([^\n\t]+)")
 
 
 def _clean_name(s):
@@ -380,8 +380,13 @@ def jump_detail_index(driver, idx, timeout=15):
 
 
 def extract_detail_fields(driver):
-    from selenium.webdriver.common.by import By
-    body_text = driver.find_element(By.TAG_NAME, "body").text
+    # Selenium's WebElement.text normalizes/collapses internal whitespace
+    # (including the tabs the detail regexes above depend on) -- confirmed
+    # live this broke every single match on the first attempt (instrument
+    # number came back empty too, not just owner). document.body.innerText
+    # via a raw JS call preserves the real tab structure -- this is what
+    # was actually tested against when the regexes above were written.
+    body_text = driver.execute_script("return document.body.innerText;") or ""
     result = {"instrument": "", "owner": "", "trustee": "", "lender": ""}
     m = DETAIL_INSTNUM_RE.search(body_text)
     if m:
