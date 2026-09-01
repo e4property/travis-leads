@@ -39,6 +39,7 @@ import urllib.request
 import urllib.parse
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 logging.basicConfig(
     level=logging.INFO,
@@ -61,7 +62,18 @@ RECORDS_PATH = Path("dashboard/records.json")
 DATA_PATH    = Path("data/records.json")
 
 TODAY        = datetime.now(timezone.utc)
-TODAY_NAIVE  = datetime.now()
+# 2026-09-01: TODAY_NAIVE used to be datetime.now() -- the runner's local
+# clock rather than Central time, where Travis County auctions actually
+# happen. This is the identical bug pattern confirmed live in bexar-leads
+# 2026-09-01: it purged 418 real leads the instant UTC crossed midnight
+# into a sale date, hours before that date started in Central time (and
+# combining a full datetime against a bare sale_date compounds it further
+# -- a lead is wrongly "passed" any time after midnight on its own sale
+# date, not just after the actual auction hour). Fixed the same way here
+# before this scraper's first real run, proactively -- not yet exposed to
+# it since this scraper's been paused, but the same auction_passed() /
+# days_until_sale() functions have the identical structure.
+TODAY_NAIVE  = datetime.now(ZoneInfo("America/Chicago")).replace(tzinfo=None)
 RUN_TIMESTAMP = TODAY.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 SCRAPE_DAYS  = 90   # rolling retention window for leads with no sale_date
@@ -400,7 +412,7 @@ def days_until_sale(sale_date_str):
         return None
     try:
         dt = datetime.strptime(sale_date_str.strip(), "%m/%d/%Y")
-        return max((dt - TODAY_NAIVE).days, 0)
+        return max((dt.date() - TODAY_NAIVE.date()).days, 0)
     except Exception:
         return None
 
@@ -410,7 +422,14 @@ def auction_passed(sale_date_str):
         return False
     try:
         dt = datetime.strptime(sale_date_str.strip(), "%m/%d/%Y")
-        return dt < TODAY_NAIVE
+        # Travis auctions run first-Tuesday-of-the-month, 10am, and this
+        # scraper has no reliable way to know whether TODAY's single
+        # monthly auction has already happened at whatever time it
+        # actually runs -- treat sale_date == today as already passed
+        # too (<=, not <), rather than risk showing a dead lead for the
+        # rest of the day. Confirmed relevant on this scraper's first
+        # real run, 2026-09-01, which happens to BE the first Tuesday.
+        return dt.date() <= TODAY_NAIVE.date()
     except Exception:
         return False
 
