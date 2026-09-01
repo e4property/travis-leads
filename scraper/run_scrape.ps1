@@ -33,6 +33,19 @@ function Log($msg) {
 Set-Location $RepoRoot
 Log "===== run_scrape.ps1 starting ====="
 
+# Guard against the exact failure that hit the first real run
+# (2026-09-01): leftover uncommitted code edits in the working tree made
+# every rebase attempt fail with "cannot rebase: you have unstaged
+# changes," and the script still reported the scrape itself as a
+# success -- the data was scraped and committed locally but silently
+# never reached GitHub. Fail loudly up front instead.
+$dirty = git status --porcelain -- . ':!dashboard/records.json' ':!data/records.json'
+if ($dirty) {
+    Log "ABORTING: working tree has uncommitted changes outside records.json -- commit or stash them manually first, or the push will fail the same way it did 2026-09-01:"
+    Log "$dirty"
+    exit 1
+}
+
 Log "Running scraper/fetch.py..."
 python scraper\fetch.py *>> $LogFile
 if ($LASTEXITCODE -ne 0) {
