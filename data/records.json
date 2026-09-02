@@ -35,8 +35,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "426209",
+    "appraised_val": "426209",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 330661,
@@ -51,7 +51,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 575381
+      },
+      {
+        "year": "2023",
+        "appraised": 520248
+      },
+      {
+        "year": "2024",
+        "appraised": 469243
+      },
+      {
+        "year": "2025",
+        "appraised": 425741
+      },
+      {
+        "year": "2026",
+        "appraised": 426209
+      }
+    ]
   },
   {
     "doc_number": "202641153",
@@ -219,8 +241,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "334708",
+    "appraised_val": "334708",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 501382,
@@ -235,7 +257,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 439432
+      },
+      {
+        "year": "2023",
+        "appraised": 441612
+      },
+      {
+        "year": "2024",
+        "appraised": 415076
+      },
+      {
+        "year": "2025",
+        "appraised": 368733
+      },
+      {
+        "year": "2026",
+        "appraised": 334708
+      }
+    ]
   },
   {
     "doc_number": "202641129",
@@ -5769,7 +5813,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 5,
     "flags": [],
     "run_ts": "2026-09-02T18:52:56Z",
