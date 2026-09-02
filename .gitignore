@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 .venv/
 scraper/run_scrape.log
+.claude/
