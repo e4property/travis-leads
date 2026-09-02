@@ -143,8 +143,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "434703",
+    "appraised_val": "434703",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 835906,
@@ -159,7 +159,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2026",
+        "appraised": 434703
+      },
+      {
+        "year": "2025",
+        "appraised": 484174
+      },
+      {
+        "year": "2024",
+        "appraised": 518029
+      },
+      {
+        "year": "2023",
+        "appraised": 586617
+      },
+      {
+        "year": "2022",
+        "appraised": 628201
+      }
+    ]
   },
   {
     "doc_number": "202641130",
@@ -251,8 +273,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "485785",
+    "appraised_val": "485785",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 324878,
@@ -267,7 +289,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 665468
+      },
+      {
+        "year": "2023",
+        "appraised": 629605
+      },
+      {
+        "year": "2024",
+        "appraised": 502940
+      },
+      {
+        "year": "2025",
+        "appraised": 472359
+      },
+      {
+        "year": "2026",
+        "appraised": 485785
+      }
+    ]
   },
   {
     "doc_number": "202641128",
@@ -305,8 +349,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "1898964",
+    "appraised_val": "1898964",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 312412,
@@ -321,7 +365,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 776140
+      },
+      {
+        "year": "2023",
+        "appraised": 1204791
+      },
+      {
+        "year": "2024",
+        "appraised": 1598445
+      },
+      {
+        "year": "2025",
+        "appraised": 1592536
+      },
+      {
+        "year": "2026",
+        "appraised": 1898964
+      }
+    ]
   },
   {
     "doc_number": "202641120",
@@ -359,8 +425,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "323599",
+    "appraised_val": "323599",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 910783,
@@ -375,7 +441,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2026",
+        "appraised": 323599
+      },
+      {
+        "year": "2025",
+        "appraised": 347955
+      },
+      {
+        "year": "2024",
+        "appraised": 374470
+      },
+      {
+        "year": "2023",
+        "appraised": 410527
+      },
+      {
+        "year": "2022",
+        "appraised": 413956
+      }
+    ]
   },
   {
     "doc_number": "202641119",
@@ -413,8 +501,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "404055",
+    "appraised_val": "404055",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 498765,
@@ -429,7 +517,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 643729
+      },
+      {
+        "year": "2023",
+        "appraised": 580347
+      },
+      {
+        "year": "2024",
+        "appraised": 517607
+      },
+      {
+        "year": "2025",
+        "appraised": 476977
+      },
+      {
+        "year": "2026",
+        "appraised": 404055
+      }
+    ]
   },
   {
     "doc_number": "202641115",
@@ -467,8 +577,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "447322",
+    "appraised_val": "447322",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 148164,
@@ -483,7 +593,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2026",
+        "appraised": 447322
+      },
+      {
+        "year": "2025",
+        "appraised": 539070
+      },
+      {
+        "year": "2024",
+        "appraised": 548890
+      },
+      {
+        "year": "2023",
+        "appraised": 615894
+      },
+      {
+        "year": "2022",
+        "appraised": 603311
+      }
+    ]
   },
   {
     "doc_number": "202641112",
@@ -521,8 +653,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "981411",
+    "appraised_val": "981411",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 958119,
@@ -537,7 +669,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 113438
+      },
+      {
+        "year": "2023",
+        "appraised": 741263
+      },
+      {
+        "year": "2024",
+        "appraised": 1568876
+      },
+      {
+        "year": "2025",
+        "appraised": 1137337
+      },
+      {
+        "year": "2026",
+        "appraised": 981411
+      }
+    ]
   },
   {
     "doc_number": "202641105",
@@ -575,8 +729,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "345388",
+    "appraised_val": "345388",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 884166,
@@ -591,7 +745,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 457616
+      },
+      {
+        "year": "2023",
+        "appraised": 419721
+      },
+      {
+        "year": "2024",
+        "appraised": 375617
+      },
+      {
+        "year": "2025",
+        "appraised": 342838
+      },
+      {
+        "year": "2026",
+        "appraised": 345388
+      }
+    ]
   },
   {
     "doc_number": "202641142",
@@ -629,8 +805,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "345723",
+    "appraised_val": "345723",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 897519,
@@ -645,7 +821,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2026",
+        "appraised": 345723
+      },
+      {
+        "year": "2025",
+        "appraised": 336237
+      },
+      {
+        "year": "2024",
+        "appraised": 355365
+      },
+      {
+        "year": "2023",
+        "appraised": 403319
+      },
+      {
+        "year": "2022",
+        "appraised": 416946
+      }
+    ]
   },
   {
     "doc_number": "202641136",
@@ -683,8 +881,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "182221",
+    "appraised_val": "182221",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 508339,
@@ -699,7 +897,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2026",
+        "appraised": 182221
+      },
+      {
+        "year": "2025",
+        "appraised": 179087
+      },
+      {
+        "year": "2024",
+        "appraised": 216674
+      },
+      {
+        "year": "2023",
+        "appraised": 210454
+      },
+      {
+        "year": "2022",
+        "appraised": 233812
+      }
+    ]
   },
   {
     "doc_number": "202641117",
@@ -737,8 +957,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "559407",
+    "appraised_val": "559407",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 333507,
@@ -753,7 +973,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 561948
+      },
+      {
+        "year": "2023",
+        "appraised": 552563
+      },
+      {
+        "year": "2024",
+        "appraised": 593366
+      },
+      {
+        "year": "2025",
+        "appraised": 536062
+      },
+      {
+        "year": "2026",
+        "appraised": 559407
+      }
+    ]
   },
   {
     "doc_number": "202641165",
@@ -5492,6 +5734,61 @@
     "market_value": "",
     "appraised_val": "",
     "assessed_val": "",
+    "deed_date": "",
+    "prop_id": "",
+    "owner_mail_addr": "",
+    "ce_case_id": "",
+    "ce_status": "",
+    "ce_priority": "",
+    "ce_case_type": "",
+    "ce_repeat_offender": false,
+    "ce_opened_date": "",
+    "dash_phone": "",
+    "dash_dispo": "new",
+    "dash_notes": "",
+    "ghl_pushed": false,
+    "ghl_id": ""
+  },
+  {
+    "doc_number": "026102804",
+    "county": "travis",
+    "type": "NOF",
+    "source": "tccsearch",
+    "owner": "Lewis Isaac",
+    "address": "",
+    "city": "Austin",
+    "zip": "",
+    "date_filed": "08/27/2026",
+    "sale_date": "",
+    "days_until_sale": null,
+    "legal_desc": "[E] PUBLIC THE\nLT 71 BLK H SEC 2-A AMD PLAT COPPERFIELD",
+    "status_index": "Temp",
+    "global_id": "",
+    "trustee": "",
+    "lender": "",
+    "absentee": false,
+    "is_entity": false,
+    "duplicate": false,
+    "is_new": true,
+    "score": 5,
+    "flags": [],
+    "run_ts": "2026-09-02T18:52:56Z",
+    "mortgage_balance_est": "",
+    "tax_delinquent_amt": "",
+    "tax_delinquent_years": "",
+    "judgment_amt": "",
+    "hoa_lien_amt": "",
+    "mechanics_lien_amt": "",
+    "other_lien_amt": "",
+    "total_liens_est": "",
+    "equity_est": "",
+    "equity_pct": "",
+    "ltv_est": "",
+    "stacked_liens": [],
+    "market_value": "",
+    "appraised_val": "",
+    "assessed_val": "",
+    "value_history": [],
     "deed_date": "",
     "prop_id": "",
     "owner_mail_addr": "",
