@@ -171,6 +171,7 @@ def new_record(doc_number, lead_type, source="tccsearch", run_ts=None):
         "market_value":        "",
         "appraised_val":       "",
         "assessed_val":        "",
+        "value_history":       [],   # [{"year":"2026","appraised":426209}, ...] from TCAD
         "deed_date":           "",
         "prop_id":             "",
         "owner_mail_addr":     "",
@@ -622,9 +623,9 @@ def enrich_from_tcad(rec):
     the full county parcel layer. This confirms the address and gets
     PROP_ID + a prodigycad.com detail-page link, but NOT owner name or
     market value — TCAD's public ArcGIS layer doesn't expose those (see
-    CLAUDE.md). Filling market_value/owner_mail_addr is future work: needs
-    a verified scrape of the prodigycad property-detail page, same
-    pattern as Bexar's trueautomation.com deed/ARV lookup.
+    CLAUDE.md). Owner comes from the notice's own detail page (see
+    fetch_real_owners); market value comes from fetch_tcad_property_value
+    below, using this record's prop_id.
     """
     addr = (rec.get("address") or "").strip()
     if not addr:
@@ -640,6 +641,62 @@ def enrich_from_tcad(rec):
     rec["prop_id"]    = a.get("PROP_ID") or ""
     rec["legal_desc"] = rec.get("legal_desc") or a.get("legal_desc") or ""
     rec["_tcad_hyperlink"] = a.get("hyperlink") or ""
+
+
+# 2026-09-02: confirmed live -- travis.prodigycad.com/property-detail/{PROP_ID}
+# (the real production host; the "stage." version from the earlier notes just
+# redirects here) exposes full appraised-value history with no login. It's a
+# React SPA -- the underlying API (prod-container.trueprodigyapi.com) needs a
+# per-tenant client config this scraper couldn't cleanly replicate (hit a
+# backend DB-host-resolution error trying), so this drives a real browser and
+# reads the rendered text instead, the same approach already used elsewhere
+# in this codebase. One real gotcha: the Values section is scroll-triggered
+# lazy content, not present in the DOM on page load -- confirmed live, "Values"
+# heading renders immediately but "Appraised" only appears after scrolling
+# roughly halfway down the page. Values are real text, not an image -- no OCR
+# needed, unlike Bexar's equivalent deed/ARV lookup.
+TCAD_DETAIL_BASE = "https://travis.prodigycad.com/property-detail/"
+CURRENT_APPRAISED_RE = re.compile(r"CURRENT VALUES.*?Appraised\n\n([\d,]+)\n\nValue Limitation", re.DOTALL)
+VALUE_HISTORY_ROW_RE = re.compile(r"^(\d{4})\t([\d,]+)\t([\d,]+)\t([\d,]+)\t([\d,]+)\t([\d,]+)\t([\d,]+)$", re.MULTILINE)
+
+
+def fetch_tcad_property_value(driver, prop_id, timeout=15, _retried=False):
+    from selenium.webdriver.support.ui import WebDriverWait
+
+    result = {"market_value": "", "appraised_val": "", "value_history": []}
+    try:
+        driver.set_page_load_timeout(timeout)
+        driver.get(f"{TCAD_DETAIL_BASE}{prop_id}")
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight * 0.4);")
+        WebDriverWait(driver, timeout).until(
+            lambda d: "Appraised" in (d.execute_script("return document.body.innerText;") or "")
+        )
+        text = driver.execute_script("return document.body.innerText;") or ""
+
+        m = CURRENT_APPRAISED_RE.search(text)
+        if m:
+            val = m.group(1).replace(",", "")
+            result["appraised_val"] = val
+            result["market_value"] = val
+
+        history = []
+        for row in VALUE_HISTORY_ROW_RE.finditer(text):
+            year, land, impr, excl, appraised, adj, net = row.groups()
+            history.append({"year": year, "appraised": int(appraised.replace(",", ""))})
+        if history:
+            result["value_history"] = history
+    except Exception as e:
+        log.debug(f"  fetch_tcad_property_value: prop_id={prop_id} failed: {e}")
+
+    # Confirmed live: a freshly-created driver's very FIRST page load to this
+    # site can be slow enough to miss the wait window (Google Maps API,
+    # several JS chunks, cold DNS) even though the site itself is fine --
+    # every subsequent call on the same driver succeeded in under 2s. One
+    # retry covers this without masking a genuinely-down site (retry only
+    # fires once).
+    if not result["appraised_val"] and not _retried:
+        return fetch_tcad_property_value(driver, prop_id, timeout=timeout, _retried=True)
+    return result
 
 
 # ── CODE ENFORCEMENT (Austin Socrata) ───────────────────────────────────────
@@ -801,23 +858,49 @@ def main():
                 log.error(f"scrape_tccsearch error for {code}: {e}", exc_info=True)
             # fresh search entry for the next doc type
             accept_disclaimer(driver)
+
+        log.info(f"tccsearch.org total new: {len(all_new)}")
+
+        # TCAD ArcGIS enrichment — cap per run to avoid hammering the endpoint.
+        # Plain HTTP, doesn't need the browser, but has to run before the
+        # prodigycad value lookup below since it's what fills prop_id.
+        enrich_targets = [r for r in all_new if r["type"] in ("NOF", "APPT") and r.get("owner")][:60]
+        log.info(f"TCAD ArcGIS enrichment: {len(enrich_targets)} candidates")
+        for r in enrich_targets:
+            try:
+                enrich_from_tcad(r)
+            except Exception as e:
+                log.debug(f"TCAD ArcGIS enrich error [{r['doc_number']}]: {e}")
+            time.sleep(0.3)
+
+        # TCAD property-value enrichment (travis.prodigycad.com) — needs the
+        # browser, so has to happen before driver.quit() below. Covers both
+        # this run's new leads AND any existing lead still missing a value
+        # (catch-up for leads that fell outside a previous run's budget),
+        # capped so a normal run stays a reasonable length.
+        value_targets = [
+            r for r in (existing + all_new)
+            if r.get("prop_id") and not r.get("appraised_val")
+        ][:60]
+        log.info(f"TCAD property-value enrichment: {len(value_targets)} candidates")
+        value_filled = 0
+        for r in value_targets:
+            try:
+                vals = fetch_tcad_property_value(driver, r["prop_id"])
+                if vals.get("appraised_val"):
+                    r["appraised_val"]  = vals["appraised_val"]
+                    r["market_value"]   = vals["market_value"]
+                    r["value_history"]  = vals["value_history"]
+                    value_filled += 1
+            except Exception as e:
+                log.debug(f"TCAD value enrich error [{r.get('doc_number')}]: {e}")
+            time.sleep(0.5)
+        log.info(f"TCAD property-value enrichment: {value_filled}/{len(value_targets)} filled")
     finally:
         try:
             driver.quit()
         except Exception:
             pass
-
-    log.info(f"tccsearch.org total new: {len(all_new)}")
-
-    # TCAD enrichment — cap per run to avoid hammering the ArcGIS endpoint
-    enrich_targets = [r for r in all_new if r["type"] in ("NOF", "APPT") and r.get("owner")][:60]
-    log.info(f"TCAD enrichment: {len(enrich_targets)} candidates")
-    for r in enrich_targets:
-        try:
-            enrich_from_tcad(r)
-        except Exception as e:
-            log.debug(f"TCAD enrich error [{r['doc_number']}]: {e}")
-        time.sleep(0.3)
 
     # Code Enforcement disabled for now — foreclosure-only per user request,
     # and CE data has no owner name anyway (see fetch_code_enforcement docstring).
