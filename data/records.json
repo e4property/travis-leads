@@ -111,8 +111,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "329623",
+    "appraised_val": "329623",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 554927,
@@ -127,7 +127,29 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 465244
+      },
+      {
+        "year": "2023",
+        "appraised": 456896
+      },
+      {
+        "year": "2024",
+        "appraised": 455475
+      },
+      {
+        "year": "2025",
+        "appraised": 406408
+      },
+      {
+        "year": "2026",
+        "appraised": 329623
+      }
+    ]
   },
   {
     "doc_number": "202641131",
