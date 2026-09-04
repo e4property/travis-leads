@@ -37,7 +37,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests selenium webdriver-manager
+        run: pip install requests selenium webdriver-manager homeharvest
 
       - name: Run python scraper/fetch.py
         run: python scraper/fetch.py

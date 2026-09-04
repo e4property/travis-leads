@@ -79,6 +79,16 @@ RUN_TIMESTAMP = TODAY.strftime("%Y-%m-%dT%H:%M:%SZ")
 SCRAPE_DAYS  = 90   # rolling retention window for leads with no sale_date
 MAX_PAGES    = 15   # 20 records/page; early-exits on known_docs anyway
 
+# ── ARV / on-market (HomeHarvest, free, no API key) ─────────────────────────
+# Same method as bexar-leads/guadalupe-leads: homeharvest scrapes Realtor.com's
+# public page data for an estimated_value + on-market status. Ported here
+# 2026-09-04 -- see fetch_arv_homeharvest()/refresh_on_market_status() below
+# for the full rationale (copied near-verbatim from bexar-leads/scraper/fetch.py).
+ARV_FETCH_LIMIT        = 30   # max leads to look up via HomeHarvest/Realtor.com per run
+ON_MARKET_STATUSES     = {"FOR_SALE", "PENDING", "FOR_RENT"}
+ON_MARKET_REFRESH_DAYS = 7    # re-check a lead's market status at most this often
+ON_MARKET_REFRESH_LIMIT = 15  # max already-checked leads to re-check per run
+
 # Doc types to pull from tccsearch.org, mapped to our internal lead "type".
 # checkbox `value` codes confirmed live against the site — see CLAUDE.md.
 # Foreclosure-only for now per user request (2026-08-04) — other types
@@ -175,6 +185,14 @@ def new_record(doc_number, lead_type, source="tccsearch", run_ts=None):
         "deed_date":           "",
         "prop_id":             "",
         "owner_mail_addr":     "",
+        # ── ARV / on-market (HomeHarvest/Realtor.com) ───────────────────────
+        "arv_estimate":        "",
+        "arv_status":          "",
+        "arv_sqft":            "",
+        "arv_fetched_at":      "",
+        "on_market":           False,
+        "on_market_status":    "",
+        "on_market_checked_at": "",
         # ── Code enforcement ────────────────────────────────────────────────
         "ce_case_id":          "",
         "ce_status":           "",
@@ -699,6 +717,169 @@ def fetch_tcad_property_value(driver, prop_id, timeout=15, _retried=False):
     return result
 
 
+def fetch_arv_homeharvest(records):
+    """
+    Free ARV estimate via homeharvest (pip, MIT license) scraping Realtor.com's
+    public page data -- no API key, no cost. Ported near-verbatim from
+    bexar-leads/scraper/fetch.py 2026-09-04 (same method already live on
+    Bexar and Guadalupe). Realtor.com blends CoreLogic, Collateral
+    Analytics, and Quantarium AVMs into an estimated_value field that's
+    present even for off-market/distressed properties.
+
+    Kept as a soft dependency: any failure (network, no match, library
+    error) just leaves arv_estimate blank rather than breaking the run --
+    the lead still has TCAD's appraised_val as a fallback value signal.
+
+    No Selenium driver needed -- homeharvest does its own HTTP requests.
+    """
+    import pandas as pd
+    from homeharvest import scrape_property
+
+    def clean(val):
+        if val is None or pd.isna(val):
+            return None
+        s = str(val).strip()
+        return None if s in ("", "nan", "<NA>", "None") else val
+
+    candidates = [
+        r for r in records
+        if r.get("address") and not r.get("arv_estimate")
+    ]
+    candidates = candidates[:ARV_FETCH_LIMIT]
+
+    if not candidates:
+        log.info("ARV (HomeHarvest): no eligible leads -- skipping")
+        return records
+
+    log.info(f"ARV (HomeHarvest): {len(candidates)} leads to look up (cap={ARV_FETCH_LIMIT})")
+    fetched = 0
+    errors  = 0
+
+    for rec in candidates:
+        full_addr = f"{rec['address']}, {rec.get('city', '')}, TX {rec.get('zip', '')}".strip(", ")
+        try:
+            df = scrape_property(location=full_addr)
+            now_iso = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+            if df is None or len(df) == 0:
+                log.info(f"  ARV [{rec.get('doc_number')}] {full_addr}: no match on Realtor.com")
+                rec["on_market_checked_at"] = now_iso
+                continue
+
+            row = df.iloc[0]
+            status = clean(row.get("status")) or ""
+            rec["on_market"]            = status in ON_MARKET_STATUSES
+            rec["on_market_status"]     = status
+            rec["on_market_checked_at"] = now_iso
+
+            est = clean(row.get("estimated_value"))
+            if est is not None:
+                rec["arv_estimate"]   = int(est)
+                rec["arv_status"]     = status
+                sqft_val = clean(row.get("sqft"))
+                rec["arv_sqft"]       = int(sqft_val) if sqft_val is not None else None
+                rec["arv_fetched_at"] = now_iso
+                fetched += 1
+                log.info(f"  ARV [{rec.get('doc_number')}] {full_addr}: ${int(est):,} (status={status})")
+            else:
+                log.info(f"  ARV [{rec.get('doc_number')}] {full_addr}: matched but no estimated_value (status={status})")
+        except Exception as e:
+            log.warning(f"  ARV [{rec.get('doc_number')}] {full_addr}: error: {e}")
+            errors += 1
+            # Fall back to TCAD's own appraised_val rather than leaving
+            # arv_estimate permanently blank when Realtor.com blocks the
+            # request -- lower-confidence than a true Realtor.com estimate,
+            # marked APPRAISED_FALLBACK so dashboard code can tell the two
+            # apart (same convention as bexar-leads).
+            tcad_value = rec.get("appraised_val")
+            if tcad_value and not rec.get("arv_estimate"):
+                try:
+                    rec["arv_estimate"]   = int(float(tcad_value))
+                    rec["arv_status"]     = "APPRAISED_FALLBACK"
+                    rec["arv_fetched_at"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+                except (TypeError, ValueError):
+                    pass
+        finally:
+            time.sleep(1)
+
+    log.info(f"ARV (HomeHarvest): {fetched} enriched, {errors} errors out of {len(candidates)} candidates")
+    return records
+
+
+def refresh_on_market_status(records):
+    """
+    Re-checks on-market status for leads that already went through the ARV
+    pass above (excluded from those candidates) but haven't had a fresh
+    on-market check in ON_MARKET_REFRESH_DAYS -- a lead can get listed by
+    someone else weeks after we first looked it up. Ported from
+    bexar-leads/scraper/fetch.py 2026-09-04, extra_property_data=False
+    (matches the AuthenticationError workaround confirmed live there
+    2026-08-26 -- this function only reads `status`, which survives
+    without the deeper per-property call that estimated_value needs).
+    """
+    import pandas as pd
+    from homeharvest import scrape_property
+
+    def clean(val):
+        if val is None or pd.isna(val):
+            return None
+        s = str(val).strip()
+        return None if s in ("", "nan", "<NA>", "None") else val
+
+    cutoff = datetime.utcnow() - timedelta(days=ON_MARKET_REFRESH_DAYS)
+
+    def needs_refresh(r):
+        if not r.get("address") or not r.get("arv_estimate"):
+            return False  # never-checked leads are handled by the ARV pass
+        checked_at = r.get("on_market_checked_at")
+        if not checked_at:
+            return True
+        try:
+            return datetime.strptime(checked_at, "%Y-%m-%dT%H:%M:%SZ") < cutoff
+        except Exception:
+            return True
+
+    candidates = [r for r in records if needs_refresh(r)]
+    candidates = candidates[:ON_MARKET_REFRESH_LIMIT]
+
+    if not candidates:
+        log.info("On-market refresh: no eligible leads -- skipping")
+        return records
+
+    log.info(f"On-market refresh: {len(candidates)} leads to re-check (cap={ON_MARKET_REFRESH_LIMIT})")
+    changed = 0
+    errors  = 0
+
+    for rec in candidates:
+        full_addr = f"{rec['address']}, {rec.get('city', '')}, TX {rec.get('zip', '')}".strip(", ")
+        try:
+            df = scrape_property(location=full_addr, extra_property_data=False)
+            now_iso = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+            was_on_market = bool(rec.get("on_market"))
+
+            if df is None or len(df) == 0:
+                rec["on_market_checked_at"] = now_iso
+                continue
+
+            status = clean(df.iloc[0].get("status")) or ""
+            rec["on_market"]            = status in ON_MARKET_STATUSES
+            rec["on_market_status"]     = status
+            rec["on_market_checked_at"] = now_iso
+
+            if rec["on_market"] != was_on_market:
+                changed += 1
+                log.info(f"  On-market [{rec.get('doc_number')}] {full_addr}: "
+                         f"{was_on_market} -> {rec['on_market']} (status={status})")
+        except Exception as e:
+            log.warning(f"  On-market [{rec.get('doc_number')}] {full_addr}: error: {e}")
+            errors += 1
+        finally:
+            time.sleep(1)
+
+    log.info(f"On-market refresh: {changed} status changes, {errors} errors out of {len(candidates)} candidates")
+    return records
+
+
 # ── CODE ENFORCEMENT (Austin Socrata) ───────────────────────────────────────
 def fetch_code_enforcement(known_docs, limit=200):
     app_token = os.environ.get("SOCRATA_APP_TOKEN", "")
@@ -906,6 +1087,18 @@ def main():
     # and CE data has no owner name anyway (see fetch_code_enforcement docstring).
 
     all_records = existing + all_new
+
+    # ARV + on-market via HomeHarvest (free, Realtor.com, no Selenium needed) —
+    # same method as bexar-leads/guadalupe-leads, ported 2026-09-04.
+    try:
+        all_records = fetch_arv_homeharvest(all_records)
+    except Exception as e:
+        log.warning(f"ARV (HomeHarvest) error: {e}")
+
+    try:
+        all_records = refresh_on_market_status(all_records)
+    except Exception as e:
+        log.warning(f"On-market refresh error: {e}")
     all_records = purge_past_auctions(all_records)
     stack_liens(all_records)
 
