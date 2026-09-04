@@ -73,7 +73,14 @@
         "year": "2026",
         "appraised": 426209
       }
-    ]
+    ],
+    "arv_estimate": 548800,
+    "arv_status": "SOLD",
+    "arv_sqft": 1544,
+    "arv_fetched_at": "2026-09-04T15:57:13Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:57:13Z"
   },
   {
     "doc_number": "202641153",
@@ -149,7 +156,14 @@
         "year": "2026",
         "appraised": 329623
       }
-    ]
+    ],
+    "arv_estimate": 376624,
+    "arv_status": "SOLD",
+    "arv_sqft": 1801,
+    "arv_fetched_at": "2026-09-04T15:57:16Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:57:16Z"
   },
   {
     "doc_number": "202641131",
@@ -225,7 +239,14 @@
         "year": "2022",
         "appraised": 628201
       }
-    ]
+    ],
+    "arv_estimate": 462700,
+    "arv_status": "SOLD",
+    "arv_sqft": 2268,
+    "arv_fetched_at": "2026-09-04T15:57:18Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:57:18Z"
   },
   {
     "doc_number": "202641130",
@@ -301,7 +322,14 @@
         "year": "2026",
         "appraised": 334708
       }
-    ]
+    ],
+    "arv_estimate": 389000,
+    "arv_status": "PENDING",
+    "arv_sqft": 1627,
+    "arv_fetched_at": "2026-09-04T15:57:21Z",
+    "on_market": true,
+    "on_market_status": "PENDING",
+    "on_market_checked_at": "2026-09-04T15:57:21Z"
   },
   {
     "doc_number": "202641129",
@@ -377,7 +405,14 @@
         "year": "2026",
         "appraised": 485785
       }
-    ]
+    ],
+    "arv_estimate": 412026,
+    "arv_status": "SOLD",
+    "arv_sqft": 3261,
+    "arv_fetched_at": "2026-09-04T15:57:24Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:57:24Z"
   },
   {
     "doc_number": "202641128",
@@ -453,7 +488,14 @@
         "year": "2026",
         "appraised": 1898964
       }
-    ]
+    ],
+    "arv_estimate": 1504000,
+    "arv_status": "SOLD",
+    "arv_sqft": 5238,
+    "arv_fetched_at": "2026-09-04T15:57:27Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:57:27Z"
   },
   {
     "doc_number": "202641120",
@@ -529,7 +571,14 @@
         "year": "2022",
         "appraised": 413956
       }
-    ]
+    ],
+    "arv_estimate": 300600,
+    "arv_status": "SOLD",
+    "arv_sqft": 1843,
+    "arv_fetched_at": "2026-09-04T15:57:29Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:57:29Z"
   },
   {
     "doc_number": "202641119",
@@ -605,7 +654,14 @@
         "year": "2026",
         "appraised": 404055
       }
-    ]
+    ],
+    "arv_estimate": 500868,
+    "arv_status": "SOLD",
+    "arv_sqft": 2429,
+    "arv_fetched_at": "2026-09-04T15:57:32Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:57:32Z"
   },
   {
     "doc_number": "202641115",
@@ -681,7 +737,14 @@
         "year": "2022",
         "appraised": 603311
       }
-    ]
+    ],
+    "arv_estimate": 528000,
+    "arv_status": "SOLD",
+    "arv_sqft": 2556,
+    "arv_fetched_at": "2026-09-04T15:57:35Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:57:35Z"
   },
   {
     "doc_number": "202641112",
@@ -757,7 +820,14 @@
         "year": "2026",
         "appraised": 981411
       }
-    ]
+    ],
+    "arv_estimate": 1039900,
+    "arv_status": "SOLD",
+    "arv_sqft": 4633,
+    "arv_fetched_at": "2026-09-04T15:57:38Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:57:38Z"
   },
   {
     "doc_number": "202641105",
@@ -833,7 +903,14 @@
         "year": "2026",
         "appraised": 345388
       }
-    ]
+    ],
+    "arv_estimate": 315072,
+    "arv_status": "FOR_SALE",
+    "arv_sqft": 2570,
+    "arv_fetched_at": "2026-09-04T15:57:40Z",
+    "on_market": true,
+    "on_market_status": "FOR_SALE",
+    "on_market_checked_at": "2026-09-04T15:57:40Z"
   },
   {
     "doc_number": "202641142",
@@ -909,7 +986,14 @@
         "year": "2022",
         "appraised": 416946
       }
-    ]
+    ],
+    "arv_estimate": 342800,
+    "arv_status": "SOLD",
+    "arv_sqft": 2274,
+    "arv_fetched_at": "2026-09-04T15:57:43Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:57:43Z"
   },
   {
     "doc_number": "202641136",
@@ -985,7 +1069,14 @@
         "year": "2022",
         "appraised": 233812
       }
-    ]
+    ],
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": true,
+    "on_market_status": "FOR_RENT",
+    "on_market_checked_at": "2026-09-04T15:58:07Z"
   },
   {
     "doc_number": "202641117",
@@ -1061,7 +1152,14 @@
         "year": "2026",
         "appraised": 559407
       }
-    ]
+    ],
+    "arv_estimate": 539400,
+    "arv_status": "FOR_SALE",
+    "arv_sqft": 1459,
+    "arv_fetched_at": "2026-09-04T15:58:10Z",
+    "on_market": true,
+    "on_market_status": "FOR_SALE",
+    "on_market_checked_at": "2026-09-04T15:58:10Z"
   },
   {
     "doc_number": "202641174",
@@ -1137,7 +1235,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": 362082,
+    "arv_status": "SOLD",
+    "arv_sqft": 1586,
+    "arv_fetched_at": "2026-09-04T15:58:12Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:58:12Z"
   },
   {
     "doc_number": "202641170",
@@ -1213,7 +1318,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": 312273,
+    "arv_status": "SOLD",
+    "arv_sqft": 1493,
+    "arv_fetched_at": "2026-09-04T15:58:15Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:58:15Z"
   },
   {
     "doc_number": "202641169",
@@ -1289,7 +1401,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": 5508000,
+    "arv_status": "SOLD",
+    "arv_sqft": 8800,
+    "arv_fetched_at": "2026-09-04T15:58:18Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:58:18Z"
   },
   {
     "doc_number": "202641168",
@@ -1365,7 +1484,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": 379400,
+    "arv_status": "SOLD",
+    "arv_sqft": 2239,
+    "arv_fetched_at": "2026-09-04T15:58:21Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:58:21Z"
   },
   {
     "doc_number": "202641165",
@@ -1419,7 +1545,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": true,
+    "on_market_status": "FOR_RENT",
+    "on_market_checked_at": "2026-09-04T15:59:25Z"
   },
   {
     "doc_number": "202641160",
@@ -1473,7 +1606,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": "2026-09-04T15:59:27Z"
   },
   {
     "doc_number": "202641154",
@@ -1527,7 +1667,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": false,
+    "on_market_status": "OFF_MARKET",
+    "on_market_checked_at": "2026-09-04T15:59:30Z"
   },
   {
     "doc_number": "202641150",
@@ -1581,7 +1728,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": 470000,
+    "arv_status": "SOLD",
+    "arv_sqft": 1469,
+    "arv_fetched_at": "2026-09-04T15:59:33Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T15:59:33Z"
   },
   {
     "doc_number": "202641143",
@@ -1635,7 +1789,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": "2026-09-04T15:59:35Z"
   },
   {
     "doc_number": "202641138",
@@ -1689,7 +1850,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": true,
+    "on_market_status": "FOR_RENT",
+    "on_market_checked_at": "2026-09-04T16:00:41Z"
   },
   {
     "doc_number": "202641137",
@@ -1743,7 +1911,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": true,
+    "on_market_status": "FOR_RENT",
+    "on_market_checked_at": "2026-09-04T16:01:45Z"
   },
   {
     "doc_number": "202641132",
@@ -1797,7 +1972,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": 444200,
+    "arv_status": "SOLD",
+    "arv_sqft": 2930,
+    "arv_fetched_at": "2026-09-04T16:01:48Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T16:01:48Z"
   },
   {
     "doc_number": "202641127",
@@ -1851,7 +2033,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": "2026-09-04T16:01:50Z"
   },
   {
     "doc_number": "202641121",
@@ -1905,7 +2094,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": 291200,
+    "arv_status": "SOLD",
+    "arv_sqft": 1220,
+    "arv_fetched_at": "2026-09-04T16:01:53Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T16:01:53Z"
   },
   {
     "doc_number": "202641114",
@@ -1959,7 +2155,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": 762900,
+    "arv_status": "SOLD",
+    "arv_sqft": 3250,
+    "arv_fetched_at": "2026-09-04T16:01:56Z",
+    "on_market": false,
+    "on_market_status": "SOLD",
+    "on_market_checked_at": "2026-09-04T16:01:56Z"
   },
   {
     "doc_number": "202641113",
@@ -2013,7 +2216,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": 556000,
+    "arv_status": "OFF_MARKET",
+    "arv_sqft": 1260,
+    "arv_fetched_at": "2026-09-04T16:01:59Z",
+    "on_market": false,
+    "on_market_status": "OFF_MARKET",
+    "on_market_checked_at": "2026-09-04T16:01:59Z"
   },
   {
     "doc_number": "202641111",
@@ -2067,7 +2277,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641109",
@@ -2121,7 +2338,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641108",
@@ -2175,7 +2399,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641103",
@@ -2229,7 +2460,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641102",
@@ -2283,7 +2521,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641101",
@@ -2337,7 +2582,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641100",
@@ -2391,7 +2643,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641090",
@@ -2445,7 +2704,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641073",
@@ -2499,7 +2765,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641068",
@@ -2553,7 +2826,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641055",
@@ -2607,7 +2887,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641046",
@@ -2661,7 +2948,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641042",
@@ -2715,7 +3009,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641029",
@@ -2769,7 +3070,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641028",
@@ -2823,7 +3131,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641026",
@@ -2877,7 +3192,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641022",
@@ -2931,7 +3253,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641019",
@@ -2985,7 +3314,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641003",
@@ -3039,7 +3375,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641001",
@@ -3093,7 +3436,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202640928",
@@ -3147,7 +3497,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641189",
@@ -3202,7 +3559,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641188",
@@ -3257,7 +3621,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641187",
@@ -3312,7 +3683,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641177",
@@ -3367,7 +3745,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641171",
@@ -3422,7 +3807,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641167",
@@ -3477,7 +3869,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641164",
@@ -3531,7 +3930,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641161",
@@ -3585,7 +3991,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641152",
@@ -3639,7 +4052,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641116",
@@ -3693,7 +4113,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641099",
@@ -3747,7 +4174,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641179",
@@ -3802,7 +4236,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641178",
@@ -3857,7 +4298,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641173",
@@ -3912,7 +4360,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641172",
@@ -3967,7 +4422,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641163",
@@ -4021,7 +4483,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641159",
@@ -4075,7 +4544,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641157",
@@ -4129,7 +4605,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641156",
@@ -4183,7 +4666,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641155",
@@ -4237,7 +4727,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641151",
@@ -4291,7 +4788,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641148",
@@ -4345,7 +4849,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641147",
@@ -4399,7 +4910,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641145",
@@ -4453,7 +4971,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641144",
@@ -4507,7 +5032,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641141",
@@ -4561,7 +5093,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641140",
@@ -4615,7 +5154,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641135",
@@ -4669,7 +5215,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641133",
@@ -4723,7 +5276,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641126",
@@ -4777,7 +5337,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641124",
@@ -4831,7 +5398,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641123",
@@ -4885,7 +5459,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641118",
@@ -4939,7 +5520,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641107",
@@ -4993,7 +5581,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641106",
@@ -5047,7 +5642,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641104",
@@ -5101,7 +5703,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641095",
@@ -5155,7 +5764,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641087",
@@ -5209,7 +5825,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641076",
@@ -5263,7 +5886,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641075",
@@ -5317,7 +5947,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641074",
@@ -5371,7 +6008,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641067",
@@ -5425,7 +6069,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641060",
@@ -5479,7 +6130,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641058",
@@ -5533,7 +6191,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641057",
@@ -5587,7 +6252,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641048",
@@ -5641,7 +6313,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641045",
@@ -5695,7 +6374,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641043",
@@ -5749,7 +6435,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641040",
@@ -5803,7 +6496,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641025",
@@ -5857,7 +6557,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641014",
@@ -5911,7 +6618,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641010",
@@ -5965,7 +6679,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641002",
@@ -6019,7 +6740,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202640993",
@@ -6073,7 +6801,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202640989",
@@ -6127,7 +6862,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202640979",
@@ -6181,7 +6923,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641192",
@@ -6236,7 +6985,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641190",
@@ -6291,7 +7047,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641185",
@@ -6346,7 +7109,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641184",
@@ -6401,7 +7171,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641183",
@@ -6456,7 +7233,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641182",
@@ -6511,7 +7295,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641176",
@@ -6566,7 +7357,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641175",
@@ -6621,7 +7419,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641158",
@@ -6675,7 +7480,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641149",
@@ -6729,7 +7541,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641146",
@@ -6783,7 +7602,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641139",
@@ -6837,7 +7663,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641125",
@@ -6891,7 +7724,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641122",
@@ -6945,7 +7785,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641061",
@@ -6999,7 +7846,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641186",
@@ -7054,7 +7908,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641181",
@@ -7109,7 +7970,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "202641180",
@@ -7164,7 +8032,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "026088584",
@@ -7218,7 +8093,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "026088475",
@@ -7272,7 +8154,14 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   },
   {
     "doc_number": "026102804",
@@ -7327,6 +8216,13 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "arv_estimate": null,
+    "arv_status": null,
+    "arv_sqft": null,
+    "arv_fetched_at": null,
+    "on_market": null,
+    "on_market_status": null,
+    "on_market_checked_at": null
   }
 ]
