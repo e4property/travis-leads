@@ -1480,7 +1480,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_SALE",
-    "on_market_checked_at": "2026-09-20T18:03:02Z",
+    "on_market_checked_at": "2026-09-21T03:11:44Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -1963,7 +1963,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-09-20T18:03:54Z"
+    "on_market_checked_at": "2026-09-21T03:12:10Z"
   },
   {
     "doc_number": "202641160",
@@ -2018,7 +2018,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-09-20T18:03:56Z"
+    "on_market_checked_at": "2026-09-21T03:12:11Z"
   },
   {
     "doc_number": "202641154",
@@ -2075,7 +2075,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-09-20T18:03:59Z"
+    "on_market_checked_at": "2026-09-21T03:12:13Z"
   },
   {
     "doc_number": "202641150",
@@ -2191,7 +2191,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-09-20T18:04:02Z"
+    "on_market_checked_at": "2026-09-21T03:12:15Z"
   },
   {
     "doc_number": "202641138",
@@ -2248,7 +2248,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-09-20T18:04:54Z"
+    "on_market_checked_at": "2026-09-21T03:12:39Z"
   },
   {
     "doc_number": "202641137",
@@ -2305,7 +2305,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-09-20T18:05:48Z"
+    "on_market_checked_at": "2026-09-21T03:13:05Z"
   },
   {
     "doc_number": "202641132",
@@ -2421,7 +2421,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-09-20T18:05:50Z"
+    "on_market_checked_at": "2026-09-21T03:13:07Z"
   },
   {
     "doc_number": "202641121",
@@ -2783,7 +2783,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-09-20T18:05:54Z"
+    "on_market_checked_at": "2026-09-21T03:13:08Z"
   },
   {
     "doc_number": "202641103",
@@ -2960,7 +2960,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-09-20T18:05:56Z"
+    "on_market_checked_at": "2026-09-21T03:13:10Z"
   },
   {
     "doc_number": "202641100",
@@ -3261,7 +3261,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-09-20T18:06:51Z"
+    "on_market_checked_at": "2026-09-21T03:13:35Z"
   },
   {
     "doc_number": "202641046",
@@ -3318,7 +3318,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_SALE",
-    "on_market_checked_at": "2026-09-20T18:06:54Z"
+    "on_market_checked_at": "2026-09-21T03:13:37Z"
   },
   {
     "doc_number": "202641042",
@@ -3375,7 +3375,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-09-20T18:07:51Z"
+    "on_market_checked_at": "2026-09-21T03:14:04Z"
   },
   {
     "doc_number": "202641029",
@@ -3430,7 +3430,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-09-20T18:07:53Z"
+    "on_market_checked_at": "2026-09-21T03:14:05Z"
   },
   {
     "doc_number": "202641028",
@@ -3487,7 +3487,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-09-20T18:08:13Z"
+    "on_market_checked_at": "2026-09-21T03:14:15Z"
   },
   {
     "doc_number": "202641026",
@@ -3911,7 +3911,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-09-20T18:08:42Z"
+    "on_market_checked_at": "2026-09-21T03:14:29Z"
   },
   {
     "doc_number": "202641188",
@@ -4029,7 +4029,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-09-20T18:08:44Z"
+    "on_market_checked_at": "2026-09-21T03:14:31Z"
   },
   {
     "doc_number": "202641177",
@@ -4087,7 +4087,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-09-20T18:08:54Z"
+    "on_market_checked_at": "2026-09-21T03:14:36Z"
   },
   {
     "doc_number": "202641171",
@@ -4386,7 +4386,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-09-20T18:09:48Z",
+    "on_market_checked_at": "2026-09-21T03:15:00Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5411,7 +5411,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 9,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -5473,7 +5473,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 9,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -5535,7 +5535,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 9,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -5597,7 +5597,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 9,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -5659,7 +5659,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 9,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -10173,7 +10173,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -10981,7 +10981,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 10,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -11042,8 +11042,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/439158"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641296",
@@ -11065,7 +11064,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 10,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -11081,10 +11080,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "329000",
+    "appraised_val": "329000",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 430574
+      },
+      {
+        "year": "2023",
+        "appraised": 433376
+      },
+      {
+        "year": "2024",
+        "appraised": 419699
+      },
+      {
+        "year": "2025",
+        "appraised": 327744
+      },
+      {
+        "year": "2026",
+        "appraised": 329000
+      }
+    ],
     "deed_date": "",
     "prop_id": 894979,
     "owner_mail_addr": "",
@@ -11105,8 +11125,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/894979"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641295",
@@ -11128,7 +11147,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 10,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -11189,8 +11208,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/445587"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641164",
@@ -12119,7 +12137,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 9,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -12181,7 +12199,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 9,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -12243,7 +12261,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 9,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -13654,7 +13672,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -13716,7 +13734,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -13778,7 +13796,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -13840,7 +13858,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -13902,7 +13920,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -13964,7 +13982,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -14026,7 +14044,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -14150,7 +14168,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -14212,7 +14230,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
@@ -14274,7 +14292,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-09-20T18:00:05Z",
