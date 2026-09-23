@@ -85,7 +85,7 @@ MAX_PAGES    = 15   # 20 records/page; early-exits on known_docs anyway
 # 2026-09-04 -- see fetch_arv_homeharvest()/refresh_on_market_status() below
 # for the full rationale (copied near-verbatim from bexar-leads/scraper/fetch.py).
 ARV_FETCH_LIMIT        = 30   # max leads to look up via HomeHarvest/Realtor.com per run
-ON_MARKET_STATUSES     = {"FOR_SALE", "PENDING", "FOR_RENT"}
+ON_MARKET_STATUSES     = {"FOR_SALE", "PENDING"}
 ON_MARKET_REFRESH_DAYS = 7    # re-check a lead's market status at most this often
 ON_MARKET_REFRESH_LIMIT = 15  # max already-checked leads to re-check per run
 
@@ -828,7 +828,7 @@ def fetch_arv_homeharvest(records):
     for rec in candidates:
         full_addr = f"{rec['address']}, {rec.get('city', '')}, TX {rec.get('zip', '')}".strip(", ")
         try:
-            df = scrape_property(location=full_addr)
+            df = scrape_property(location=full_addr, listing_type=["for_sale", "pending"])
             now_iso = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
             if df is None or len(df) == 0:
@@ -928,7 +928,7 @@ def refresh_on_market_status(records):
     for rec in candidates:
         full_addr = f"{rec['address']}, {rec.get('city', '')}, TX {rec.get('zip', '')}".strip(", ")
         try:
-            df = scrape_property(location=full_addr, extra_property_data=False)
+            df = scrape_property(location=full_addr, extra_property_data=False, listing_type=["for_sale", "pending"])
             now_iso = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
             was_on_market = bool(rec.get("on_market"))
 
