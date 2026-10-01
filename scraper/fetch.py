@@ -635,6 +635,46 @@ def tcad_query(where, out_fields="*", limit=5):
     return [f.get("attributes", {}) for f in data.get("features", [])]
 
 
+# 2026-10-01: confirmed live against the ArcGIS layer directly -- TCAD's
+# roll stores USPS-style street-type abbreviations (e.g. "906 CONNECTICUT
+# DR", "7308 ONDANTRA BND"), but Travis notices often spell them out in
+# full ("906 CONNECTICUT DRIVE", "7308 ONDANTRA BEND"). The LIKE query
+# never matches across that gap. A bare trailing unit number with no
+# keyword ("301 WEST AVE 2301") breaks the same LIKE match the same way
+# "UNIT 602"/"APARTMENT A" does. This was the real reason the backlog
+# catch-up fix (see TCAD ArcGIS enrichment above) kept finding ~0-8%
+# matches even after it started actually running on backlog records --
+# two consecutive manual runs confirmed 0/60 and 0/60 before this was
+# found. Sample test against 11 real failing addresses: 1/11 matched
+# unnormalized, 8/11 matched after normalization (the other 3 are
+# apartment complexes where the roll's own situs record doesn't carry a
+# per-unit address at all -- a structural gap, not a format mismatch).
+STREET_SUFFIX_ABBR = {
+    "DRIVE": "DR", "LANE": "LN", "ROAD": "RD", "BOULEVARD": "BLVD",
+    "STREET": "ST", "AVENUE": "AVE", "COURT": "CT", "CIRCLE": "CIR",
+    "PARKWAY": "PKWY", "TRAIL": "TRL", "PLACE": "PL", "TERRACE": "TER",
+    "CROSSING": "XING", "BEND": "BND", "COVE": "CV", "POINT": "PT",
+    "HIGHWAY": "HWY", "SQUARE": "SQ", "VIEW": "VW", "GLEN": "GLN",
+    "MEADOWS": "MDWS", "HOLLOW": "HOLW", "VILLAGE": "VLG", "CREEK": "CRK",
+}
+_ALL_STREET_SUFFIXES = set(STREET_SUFFIX_ABBR) | set(STREET_SUFFIX_ABBR.values())
+_UNIT_KEYWORD_RE = re.compile(r"\s+(?:APARTMENT|APT|UNIT|SUITE|STE|#)\.?\s*\S*\s*$", re.IGNORECASE)
+
+def normalize_address_for_tcad(addr):
+    addr = (addr or "").strip().upper()
+    if not addr:
+        return addr
+    addr = _UNIT_KEYWORD_RE.sub("", addr)
+    tokens = addr.split()
+    if not tokens:
+        return addr
+    if len(tokens) >= 3 and tokens[-1].isdigit() and tokens[-2] in _ALL_STREET_SUFFIXES:
+        tokens = tokens[:-1]
+    if tokens and tokens[-1] in STREET_SUFFIX_ABBR:
+        tokens[-1] = STREET_SUFFIX_ABBR[tokens[-1]]
+    return " ".join(tokens)
+
+
 def enrich_from_tcad(rec):
     """
     Matches by situs address (parsed from the legal description) against
@@ -651,7 +691,8 @@ def enrich_from_tcad(rec):
     num = addr.split()[0] if addr.split() else ""
     if not num.isdigit():
         return
-    esc = addr.replace("'", "''")
+    query_addr = normalize_address_for_tcad(addr)
+    esc = query_addr.replace("'", "''")
     feats = tcad_query(f"situs_address LIKE UPPER('%{esc}%')", limit=3)
     if not feats:
         return
