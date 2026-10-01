@@ -19,10 +19,25 @@ concurrency:
 
 jobs:
   scrape-and-deploy:
-    runs-on: ubuntu-latest
+    # 2026-10-01: switched to the self-hosted runner on Xavi's own PC.
+    # tccsearch.org (Travis's recorder) is behind Cloudflare bot-detection
+    # that serves a "Just a moment..." challenge to every GitHub-hosted
+    # runner request, 0 leads every run since at least 9/27 -- confirmed
+    # live 2026-10-01 that a request from this machine's own network reaches
+    # the real page with no challenge at all. This repo's own CLAUDE.md
+    # already flagged "run from a non-datacenter network origin" as the one
+    # legitimate option worth trying (explicitly distinct from the firm
+    # standing policy against bypass/stealth tooling -- no proxies, no
+    # undetected-chromedriver-style packages, none of that here, just a
+    # different real network). Real tradeoff: this only runs while the
+    # runner process is alive on Xavi's machine, unlike the other counties.
+    runs-on: [self-hosted, Windows, local]
     environment:
       name: github-pages
     timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash
 
     steps:
       - name: Checkout repository
