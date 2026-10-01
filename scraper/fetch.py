@@ -1127,7 +1127,16 @@ def main():
         # TCAD ArcGIS enrichment — cap per run to avoid hammering the endpoint.
         # Plain HTTP, doesn't need the browser, but has to run before the
         # prodigycad value lookup below since it's what fills prop_id.
-        enrich_targets = [r for r in all_new if r["type"] in ("NOF", "APPT") and r.get("owner")][:60]
+        # Covers both this run's new leads AND any existing lead still
+        # missing a prop_id (catch-up for leads that fell outside a
+        # previous run's budget) — same backlog pattern as the value
+        # lookup below. Without this, a record that misses the cap on
+        # the day it's first scraped never gets a prop_id again.
+        enrich_targets = [
+            r for r in (existing + all_new)
+            if r["type"] in ("NOF", "APPT") and r.get("owner")
+            and r.get("address") and not r.get("prop_id")
+        ][:60]
         log.info(f"TCAD ArcGIS enrichment: {len(enrich_targets)} candidates")
         for r in enrich_targets:
             try:
