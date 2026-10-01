@@ -46,11 +46,14 @@ jobs:
           fetch-depth: 0
           token: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
+      # 2026-10-01: actions/setup-python fails on this fresh self-hosted
+      # Windows runner -- it tries to download+install its own standalone
+      # Python 3.11.9 (not yet in this runner's tool cache) and the
+      # installer script breaks ("'python-3.11.9-amd64.exe' is not
+      # recognized"), a known flaky path for setup-python on a Windows
+      # runner with no pre-warmed cache. This machine already has Python
+      # 3.14.4 on PATH (confirmed live) -- just use it directly instead of
+      # fighting the installer.
       - name: Install dependencies
         run: pip install requests selenium webdriver-manager homeharvest
 
