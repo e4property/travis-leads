@@ -1898,8 +1898,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "325249",
+    "appraised_val": "325249",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 166395,
@@ -1920,7 +1920,28 @@
     "arv_status": "SOLD",
     "arv_sqft": 1488,
     "arv_fetched_at": "2026-09-04T16:06:40Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/166395"
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 405199
+      },
+      {
+        "year": "2023",
+        "appraised": 428600
+      },
+      {
+        "year": "2024",
+        "appraised": 397076
+      },
+      {
+        "year": "2025",
+        "appraised": 366060
+      },
+      {
+        "year": "2026",
+        "appraised": 325249
+      }
+    ]
   },
   {
     "doc_number": "202641100",
@@ -1979,8 +2000,7 @@
     "arv_estimate": 251152,
     "arv_status": "SOLD",
     "arv_sqft": 1567,
-    "arv_fetched_at": "2026-09-04T16:06:45Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/700107"
+    "arv_fetched_at": "2026-09-04T16:06:45Z"
   },
   {
     "doc_number": "202641068",
@@ -2018,8 +2038,8 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "310326",
+    "appraised_val": "310326",
     "assessed_val": "",
     "deed_date": "",
     "prop_id": 760031,
@@ -2040,7 +2060,28 @@
     "arv_status": "SOLD",
     "arv_sqft": 1652,
     "arv_fetched_at": "2026-09-04T16:07:10Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/760031"
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 471425
+      },
+      {
+        "year": "2023",
+        "appraised": 430244
+      },
+      {
+        "year": "2024",
+        "appraised": 392476
+      },
+      {
+        "year": "2025",
+        "appraised": 361052
+      },
+      {
+        "year": "2026",
+        "appraised": 310326
+      }
+    ]
   },
   {
     "doc_number": "202641055",
@@ -2099,8 +2140,7 @@
     "arv_estimate": 296647,
     "arv_status": "PENDING",
     "arv_sqft": 1750,
-    "arv_fetched_at": "2026-09-23T15:04:13Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/844466"
+    "arv_fetched_at": "2026-09-23T15:04:13Z"
   },
   {
     "doc_number": "202641046",
@@ -2155,8 +2195,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_SALE",
-    "on_market_checked_at": "2026-10-01T21:36:09Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/310041",
+    "on_market_checked_at": "2026-10-01T23:36:34Z",
     "value_history": [
       {
         "year": "2022",
@@ -2233,7 +2272,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T21:35:33Z"
+    "on_market_checked_at": "2026-10-01T23:36:46Z"
   },
   {
     "doc_number": "202641160",
@@ -2286,7 +2325,7 @@
     "dash_dispo": "new",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-01T21:35:35Z"
+    "on_market_checked_at": "2026-10-01T23:36:48Z"
   },
   {
     "doc_number": "202641154",
@@ -2341,7 +2380,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-01T21:35:38Z"
+    "on_market_checked_at": "2026-10-01T23:36:51Z"
   },
   {
     "doc_number": "202641150",
@@ -2453,7 +2492,7 @@
     "dash_dispo": "new",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-01T21:35:41Z"
+    "on_market_checked_at": "2026-10-01T23:36:53Z"
   },
   {
     "doc_number": "202641138",
@@ -2508,7 +2547,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T21:35:54Z"
+    "on_market_checked_at": "2026-10-01T23:37:05Z"
   },
   {
     "doc_number": "202641137",
@@ -2563,7 +2602,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T21:35:59Z"
+    "on_market_checked_at": "2026-10-01T23:37:09Z"
   },
   {
     "doc_number": "202641132",
@@ -2675,7 +2714,7 @@
     "dash_dispo": "new",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-01T21:36:01Z"
+    "on_market_checked_at": "2026-10-01T23:37:11Z"
   },
   {
     "doc_number": "202641121",
@@ -3025,7 +3064,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-01T21:36:04Z"
+    "on_market_checked_at": "2026-10-01T23:37:14Z"
   },
   {
     "doc_number": "202641102",
@@ -3137,7 +3176,7 @@
     "dash_dispo": "new",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-01T21:36:06Z"
+    "on_market_checked_at": "2026-10-01T23:37:16Z"
   },
   {
     "doc_number": "202641090",
@@ -3310,7 +3349,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T21:36:14Z"
+    "on_market_checked_at": "2026-10-01T23:37:20Z"
   },
   {
     "doc_number": "202641029",
@@ -3363,7 +3402,7 @@
     "dash_dispo": "new",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-01T21:36:16Z"
+    "on_market_checked_at": "2026-10-01T23:37:22Z"
   },
   {
     "doc_number": "202641028",
@@ -3832,7 +3871,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-01T21:36:19Z"
+    "on_market_checked_at": "2026-10-01T23:37:25Z"
   },
   {
     "doc_number": "202641188",
@@ -3946,7 +3985,7 @@
     "dash_dispo": "new",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-01T21:36:21Z"
+    "on_market_checked_at": "2026-10-01T23:37:27Z"
   },
   {
     "doc_number": "202641177",
@@ -4297,7 +4336,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T21:36:29Z",
+    "on_market_checked_at": "2026-10-01T23:37:31Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -4357,7 +4396,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T21:36:44Z",
+    "on_market_checked_at": "2026-10-01T23:37:43Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -4417,7 +4456,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-01T21:36:46Z",
+    "on_market_checked_at": "2026-10-01T23:37:45Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -4477,7 +4516,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-01T21:36:49Z",
+    "on_market_checked_at": "2026-10-01T23:37:48Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -4837,7 +4876,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-01T21:36:51Z",
+    "on_market_checked_at": "2026-10-01T23:37:50Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -4897,7 +4936,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-01T21:36:53Z",
+    "on_market_checked_at": "2026-10-01T23:37:52Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5137,7 +5176,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T21:36:57Z",
+    "on_market_checked_at": "2026-10-01T23:37:58Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5197,7 +5236,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-01T21:37:00Z",
+    "on_market_checked_at": "2026-10-01T23:38:01Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5257,7 +5296,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T21:37:05Z",
+    "on_market_checked_at": "2026-10-01T23:38:06Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5317,7 +5356,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T21:37:09Z",
+    "on_market_checked_at": "2026-10-01T23:38:10Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -11209,7 +11248,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-01T21:37:24Z",
+    "on_market_checked_at": "2026-10-01T23:38:23Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -11576,10 +11615,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "418938",
+    "appraised_val": "418938",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 531403
+      },
+      {
+        "year": "2023",
+        "appraised": 507841
+      },
+      {
+        "year": "2024",
+        "appraised": 472539
+      },
+      {
+        "year": "2025",
+        "appraised": 450940
+      },
+      {
+        "year": "2026",
+        "appraised": 418938
+      }
+    ],
     "deed_date": "",
     "prop_id": 246437,
     "owner_mail_addr": "",
@@ -11994,7 +12054,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_SALE",
-    "on_market_checked_at": "2026-10-01T21:37:38Z",
+    "on_market_checked_at": "2026-10-01T23:38:25Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -12176,7 +12236,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T18:05:08Z"
+    "on_market_checked_at": "2026-10-01T23:38:36Z"
   },
   {
     "doc_number": "202641116",
@@ -12350,7 +12410,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T18:05:23Z"
+    "on_market_checked_at": "2026-10-01T23:38:49Z"
   },
   {
     "doc_number": "202641178",
@@ -12466,7 +12526,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-01T18:05:36Z"
+    "on_market_checked_at": "2026-10-01T23:39:00Z"
   },
   {
     "doc_number": "202641172",
@@ -12520,7 +12580,7 @@
     "dash_dispo": "new",
     "ghl_pushed": true,
     "ghl_id": "rlY5cQ3rcUU4XXH0nOY0",
-    "on_market_checked_at": "2026-10-01T18:05:38Z",
+    "on_market_checked_at": "2026-10-01T23:39:02Z",
     "ghl_pushed_at": "2026-09-22T19:35:16.913Z"
   },
   {
