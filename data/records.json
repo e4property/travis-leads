@@ -2295,7 +2295,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_SALE",
-    "on_market_checked_at": "2026-10-03T15:41:44Z",
+    "on_market_checked_at": "2026-10-03T18:02:35Z",
     "value_history": [
       {
         "year": "2022",
@@ -2374,7 +2374,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:42:00Z",
+    "on_market_checked_at": "2026-10-03T18:02:46Z",
     "value_history": [
       {
         "year": "2022",
@@ -2536,7 +2536,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:42:14Z",
+    "on_market_checked_at": "2026-10-03T18:02:59Z",
     "value_history": [
       {
         "year": "2022",
@@ -2615,7 +2615,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:42:20Z",
+    "on_market_checked_at": "2026-10-03T18:03:03Z",
     "value_history": [
       {
         "year": "2026",
@@ -2775,7 +2775,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-03T15:42:22Z",
+    "on_market_checked_at": "2026-10-03T18:03:05Z",
     "value_history": [
       {
         "year": "2022",
@@ -3184,7 +3184,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-03T15:42:24Z"
+    "on_market_checked_at": "2026-10-03T18:03:07Z"
   },
   {
     "doc_number": "202641042",
@@ -3241,7 +3241,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:42:28Z",
+    "on_market_checked_at": "2026-10-03T18:03:11Z",
     "value_history": [
       {
         "year": "2022",
@@ -3672,7 +3672,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-03T15:42:30Z"
+    "on_market_checked_at": "2026-10-03T18:03:13Z"
   },
   {
     "doc_number": "202641177",
@@ -4159,7 +4159,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:42:34Z",
+    "on_market_checked_at": "2026-10-03T18:03:16Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -4242,7 +4242,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:42:38Z",
+    "on_market_checked_at": "2026-10-03T18:03:20Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -4455,7 +4455,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-03T15:42:40Z"
+    "on_market_checked_at": "2026-10-03T18:03:22Z"
   },
   {
     "doc_number": "202641154",
@@ -4512,7 +4512,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-03T15:42:44Z"
+    "on_market_checked_at": "2026-10-03T18:03:25Z"
   },
   {
     "doc_number": "202641143",
@@ -4567,7 +4567,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-03T15:42:46Z"
+    "on_market_checked_at": "2026-10-03T18:03:28Z"
   },
   {
     "doc_number": "202641114",
@@ -4746,7 +4746,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-03T15:42:49Z"
+    "on_market_checked_at": "2026-10-03T18:03:30Z"
   },
   {
     "doc_number": "202641090",
@@ -4923,7 +4923,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-03T15:42:51Z"
+    "on_market_checked_at": "2026-10-03T18:03:32Z"
   },
   {
     "doc_number": "202641028",
@@ -5164,7 +5164,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-03T15:42:55Z"
+    "on_market_checked_at": "2026-10-03T18:03:36Z"
   },
   {
     "doc_number": "202641188",
@@ -5401,7 +5401,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:43:00Z",
+    "on_market_checked_at": "2026-10-03T18:03:40Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5463,7 +5463,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:43:12Z",
+    "on_market_checked_at": "2026-10-03T18:03:52Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5525,7 +5525,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-03T15:43:14Z",
+    "on_market_checked_at": "2026-10-03T18:03:54Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5587,7 +5587,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-03T15:43:17Z",
+    "on_market_checked_at": "2026-10-03T18:03:56Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5835,7 +5835,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-03T15:43:19Z",
+    "on_market_checked_at": "2026-10-03T18:03:58Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5897,7 +5897,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-03T15:43:21Z",
+    "on_market_checked_at": "2026-10-03T18:04:00Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -6145,7 +6145,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:43:25Z",
+    "on_market_checked_at": "2026-10-03T18:04:04Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -6207,7 +6207,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-03T15:43:28Z",
+    "on_market_checked_at": "2026-10-03T18:04:07Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -12172,7 +12172,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-03T15:43:39Z",
+    "on_market_checked_at": "2026-10-03T18:04:19Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -12817,8 +12817,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:43:53Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/545911",
+    "on_market_checked_at": "2026-10-03T18:04:32Z",
     "value_history": [
       {
         "year": "2022",
@@ -12902,7 +12901,6 @@
     "arv_status": "OFF_MARKET",
     "arv_sqft": 1654,
     "arv_fetched_at": "2026-09-05T22:59:05Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/496087",
     "value_history": [
       {
         "year": "2022",
@@ -12986,7 +12984,6 @@
     "arv_status": "SOLD",
     "arv_sqft": 1179,
     "arv_fetched_at": "2026-09-05T22:59:08Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/330142",
     "value_history": [
       {
         "year": "2022",
@@ -13087,8 +13084,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:44:04Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/215231"
+    "on_market_checked_at": "2026-10-03T18:04:43Z"
   },
   {
     "doc_number": "202641173",
@@ -13126,10 +13122,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "612462",
+    "appraised_val": "612462",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 726067
+      },
+      {
+        "year": "2023",
+        "appraised": 683573
+      },
+      {
+        "year": "2024",
+        "appraised": 629010
+      },
+      {
+        "year": "2025",
+        "appraised": 615205
+      },
+      {
+        "year": "2026",
+        "appraised": 612462
+      }
+    ],
     "deed_date": "",
     "prop_id": 447006,
     "owner_mail_addr": "",
@@ -13146,8 +13163,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-03T15:44:18Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/447006"
+    "on_market_checked_at": "2026-10-03T18:04:54Z"
   },
   {
     "doc_number": "202641172",
@@ -13185,10 +13201,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "249802",
+    "appraised_val": "249802",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2026",
+        "appraised": 249802
+      },
+      {
+        "year": "2025",
+        "appraised": 289961
+      },
+      {
+        "year": "2024",
+        "appraised": 265594
+      },
+      {
+        "year": "2023",
+        "appraised": 267013
+      },
+      {
+        "year": "2022",
+        "appraised": 259917
+      }
+    ],
     "deed_date": "",
     "prop_id": 532843,
     "owner_mail_addr": "",
@@ -13203,10 +13240,9 @@
     "dash_notes": "",
     "ghl_pushed": true,
     "ghl_id": "rlY5cQ3rcUU4XXH0nOY0",
-    "on_market_checked_at": "2026-10-03T15:44:20Z",
+    "on_market_checked_at": "2026-10-03T18:04:56Z",
     "dash_searched_at": "2026-09-22T19:35:16.913Z",
-    "ghl_pushed_at": "2026-09-22T19:35:16.913Z",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/532843"
+    "ghl_pushed_at": "2026-09-22T19:35:16.913Z"
   },
   {
     "doc_number": "202641217",
@@ -13289,8 +13325,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/217323"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641214",
@@ -13328,10 +13363,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "231987",
+    "appraised_val": "231987",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 289331
+      },
+      {
+        "year": "2023",
+        "appraised": 282847
+      },
+      {
+        "year": "2024",
+        "appraised": 252487
+      },
+      {
+        "year": "2025",
+        "appraised": 236851
+      },
+      {
+        "year": "2026",
+        "appraised": 231987
+      }
+    ],
     "deed_date": "",
     "prop_id": 573362,
     "owner_mail_addr": "",
@@ -13341,7 +13397,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-01T18:05:41Z",
+    "on_market_checked_at": "2026-10-03T18:04:59Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -13352,8 +13408,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/573362"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641211",
@@ -13436,8 +13491,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/720170"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641260",
@@ -13499,8 +13553,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/134605"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641242",
@@ -13538,10 +13591,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "1278376",
+    "appraised_val": "1278376",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2026",
+        "appraised": 1278376
+      },
+      {
+        "year": "2025",
+        "appraised": 1278376
+      },
+      {
+        "year": "2024",
+        "appraised": 1438524
+      },
+      {
+        "year": "2023",
+        "appraised": 1987190
+      },
+      {
+        "year": "2022",
+        "appraised": 1935785
+      }
+    ],
     "deed_date": "",
     "prop_id": 119666,
     "owner_mail_addr": "",
@@ -13562,8 +13636,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/119666"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641280",
@@ -13625,8 +13698,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/939133"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641315",
@@ -13664,10 +13736,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "646315",
+    "appraised_val": "646315",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 709492
+      },
+      {
+        "year": "2023",
+        "appraised": 740394
+      },
+      {
+        "year": "2024",
+        "appraised": 599923
+      },
+      {
+        "year": "2025",
+        "appraised": 691366
+      },
+      {
+        "year": "2026",
+        "appraised": 646315
+      }
+    ],
     "deed_date": "",
     "prop_id": 245660,
     "owner_mail_addr": "",
@@ -13688,8 +13781,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/245660"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641309",
@@ -13751,8 +13843,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/720743"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641308",
@@ -13790,10 +13881,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "330820",
+    "appraised_val": "330820",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 592214
+      },
+      {
+        "year": "2023",
+        "appraised": 416336
+      },
+      {
+        "year": "2024",
+        "appraised": 289429
+      },
+      {
+        "year": "2025",
+        "appraised": 405360
+      },
+      {
+        "year": "2026",
+        "appraised": 330820
+      }
+    ],
     "deed_date": "",
     "prop_id": 247082,
     "owner_mail_addr": "",
@@ -13814,8 +13926,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/247082"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641306",
@@ -13853,10 +13964,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "291000",
+    "appraised_val": "291000",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2026",
+        "appraised": 291000
+      },
+      {
+        "year": "2025",
+        "appraised": 290390
+      },
+      {
+        "year": "2024",
+        "appraised": 350844
+      },
+      {
+        "year": "2023",
+        "appraised": 27000
+      },
+      {
+        "year": "2022",
+        "appraised": 30000
+      }
+    ],
     "deed_date": "",
     "prop_id": 962570,
     "owner_mail_addr": "",
@@ -13877,8 +14009,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/962570"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641305",
@@ -13916,10 +14047,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "303560",
+    "appraised_val": "303560",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 459189
+      },
+      {
+        "year": "2023",
+        "appraised": 411172
+      },
+      {
+        "year": "2024",
+        "appraised": 396340
+      },
+      {
+        "year": "2025",
+        "appraised": 354838
+      },
+      {
+        "year": "2026",
+        "appraised": 303560
+      }
+    ],
     "deed_date": "",
     "prop_id": 222542,
     "owner_mail_addr": "",
@@ -13940,8 +14092,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/222542"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641303",
@@ -14003,8 +14154,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/280016"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641329",
@@ -14042,10 +14192,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "431180",
+    "appraised_val": "431180",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 535148
+      },
+      {
+        "year": "2023",
+        "appraised": 582812
+      },
+      {
+        "year": "2024",
+        "appraised": 602218
+      },
+      {
+        "year": "2025",
+        "appraised": 483655
+      },
+      {
+        "year": "2026",
+        "appraised": 431180
+      }
+    ],
     "deed_date": "",
     "prop_id": 842360,
     "owner_mail_addr": "",
@@ -14066,8 +14237,70 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
+    "ghl_id": ""
+  },
+  {
+    "doc_number": "202641337",
+    "county": "travis",
+    "type": "NOF",
+    "source": "tccsearch",
+    "owner": "Jaques Sean",
+    "address": "16201 ARROW HEAD DRIVE",
+    "city": "Leander",
+    "zip": "78641",
+    "date_filed": "10/02/2026",
+    "sale_date": "11/03/2026",
+    "days_until_sale": 31,
+    "legal_desc": "LT 27 ROUND MOUNTAIN ESTATES LOC 16201 ARROW HEAD DRIVE LEANDER TX 78641",
+    "status_index": "Temp",
+    "global_id": "",
+    "trustee": "Zavala",
+    "lender": "Brighthouse Life Insurance Company",
+    "absentee": false,
+    "is_entity": false,
+    "duplicate": false,
+    "is_new": false,
+    "score": 10,
+    "flags": [],
+    "run_ts": "2026-10-03T15:35:19Z",
+    "mortgage_balance_est": "",
+    "tax_delinquent_amt": "",
+    "tax_delinquent_years": "",
+    "judgment_amt": "",
+    "hoa_lien_amt": "",
+    "mechanics_lien_amt": "",
+    "other_lien_amt": "",
+    "total_liens_est": "",
+    "equity_est": "",
+    "equity_pct": "",
+    "ltv_est": "",
+    "stacked_liens": [],
+    "market_value": "",
+    "appraised_val": "",
+    "assessed_val": "",
+    "value_history": [],
+    "deed_date": "",
+    "prop_id": 354798,
+    "owner_mail_addr": "",
+    "arv_estimate": "",
+    "arv_status": "",
+    "arv_sqft": "",
+    "arv_fetched_at": "",
+    "on_market": false,
+    "on_market_status": "",
+    "on_market_checked_at": "",
+    "ce_case_id": "",
+    "ce_status": "",
+    "ce_priority": "",
+    "ce_case_type": "",
+    "ce_repeat_offender": false,
+    "ce_opened_date": "",
+    "dash_phone": "",
+    "dash_dispo": "new",
+    "dash_notes": "",
+    "ghl_pushed": false,
     "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/842360"
+    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/354798"
   },
   {
     "doc_number": "202641331",
@@ -14378,8 +14611,7 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/428612"
+    "ghl_id": ""
   },
   {
     "doc_number": "202641301",
@@ -14417,10 +14649,31 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "440595",
+    "appraised_val": "440595",
     "assessed_val": "",
-    "value_history": [],
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 550167
+      },
+      {
+        "year": "2023",
+        "appraised": 548733
+      },
+      {
+        "year": "2024",
+        "appraised": 497788
+      },
+      {
+        "year": "2025",
+        "appraised": 452445
+      },
+      {
+        "year": "2026",
+        "appraised": 440595
+      }
+    ],
     "deed_date": "",
     "prop_id": 331059,
     "owner_mail_addr": "",
@@ -14441,8 +14694,322 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
+    "ghl_id": ""
+  },
+  {
+    "doc_number": "202641333",
+    "county": "travis",
+    "type": "NOF",
+    "source": "tccsearch",
+    "owner": "Martinez Beau L",
+    "address": "4607 BLUE MEADOW DRIVE",
+    "city": "Austin",
+    "zip": "78744",
+    "date_filed": "10/01/2026",
+    "sale_date": "12/01/2026",
+    "days_until_sale": 59,
+    "legal_desc": "LT 6 BLK B MEADOW LAKE SUBD PHS 1-2 LOC 4607 BLUE MEADOW DRIVE AUSTIN TX 78744",
+    "status_index": "Temp",
+    "global_id": "",
+    "trustee": "Zavala",
+    "lender": "Rocket Mortgage Llc",
+    "absentee": false,
+    "is_entity": false,
+    "duplicate": false,
+    "is_new": false,
+    "score": 10,
+    "flags": [],
+    "run_ts": "2026-10-01T18:00:05Z",
+    "mortgage_balance_est": "",
+    "tax_delinquent_amt": "",
+    "tax_delinquent_years": "",
+    "judgment_amt": "",
+    "hoa_lien_amt": "",
+    "mechanics_lien_amt": "",
+    "other_lien_amt": "",
+    "total_liens_est": "",
+    "equity_est": "",
+    "equity_pct": "",
+    "ltv_est": "",
+    "stacked_liens": [],
+    "market_value": "170772",
+    "appraised_val": "170772",
+    "assessed_val": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 168760
+      },
+      {
+        "year": "2023",
+        "appraised": 165122
+      },
+      {
+        "year": "2024",
+        "appraised": 179199
+      },
+      {
+        "year": "2025",
+        "appraised": 183078
+      },
+      {
+        "year": "2026",
+        "appraised": 170772
+      }
+    ],
+    "deed_date": "",
+    "prop_id": 555947,
+    "owner_mail_addr": "",
+    "arv_estimate": "",
+    "arv_status": "",
+    "arv_sqft": "",
+    "arv_fetched_at": "",
+    "on_market": false,
+    "on_market_status": "",
+    "on_market_checked_at": "",
+    "ce_case_id": "",
+    "ce_status": "",
+    "ce_priority": "",
+    "ce_case_type": "",
+    "ce_repeat_offender": false,
+    "ce_opened_date": "",
+    "dash_phone": "",
+    "dash_dispo": "new",
+    "dash_notes": "",
+    "ghl_pushed": false,
     "ghl_id": "",
-    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/331059"
+    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/555947"
+  },
+  {
+    "doc_number": "202641325",
+    "county": "travis",
+    "type": "NOF",
+    "source": "tccsearch",
+    "owner": "Jaeger Robert T",
+    "address": "1501 BLUE WILLOW COURT",
+    "city": "Pflugerville",
+    "zip": "78660",
+    "date_filed": "10/01/2026",
+    "sale_date": "12/01/2026",
+    "days_until_sale": 59,
+    "legal_desc": "LT 14 BLK E SEC 1 HOLLOW AT SLAUGHTER CREEK SMALL LT SUBD LOC 1501 BLUE WILLOW COURT PFLUGERVILLE TX 78660",
+    "status_index": "Temp",
+    "global_id": "",
+    "trustee": "Mackie",
+    "lender": "Midfirst Bank",
+    "absentee": false,
+    "is_entity": false,
+    "duplicate": false,
+    "is_new": false,
+    "score": 10,
+    "flags": [],
+    "run_ts": "2026-10-01T18:00:05Z",
+    "mortgage_balance_est": "",
+    "tax_delinquent_amt": "",
+    "tax_delinquent_years": "",
+    "judgment_amt": "",
+    "hoa_lien_amt": "",
+    "mechanics_lien_amt": "",
+    "other_lien_amt": "",
+    "total_liens_est": "",
+    "equity_est": "",
+    "equity_pct": "",
+    "ltv_est": "",
+    "stacked_liens": [],
+    "market_value": "",
+    "appraised_val": "",
+    "assessed_val": "",
+    "value_history": [],
+    "deed_date": "",
+    "prop_id": 444914,
+    "owner_mail_addr": "",
+    "arv_estimate": "",
+    "arv_status": "",
+    "arv_sqft": "",
+    "arv_fetched_at": "",
+    "on_market": false,
+    "on_market_status": "",
+    "on_market_checked_at": "",
+    "ce_case_id": "",
+    "ce_status": "",
+    "ce_priority": "",
+    "ce_case_type": "",
+    "ce_repeat_offender": false,
+    "ce_opened_date": "",
+    "dash_phone": "",
+    "dash_dispo": "new",
+    "dash_notes": "",
+    "ghl_pushed": false,
+    "ghl_id": "",
+    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/444914"
+  },
+  {
+    "doc_number": "202641324",
+    "county": "travis",
+    "type": "NOF",
+    "source": "tccsearch",
+    "owner": "Ging Stanley W",
+    "address": "1501 BLUE WILLOW COURT",
+    "city": "Pflugerville",
+    "zip": "78660",
+    "date_filed": "10/01/2026",
+    "sale_date": "12/01/2026",
+    "days_until_sale": 59,
+    "legal_desc": "LT 37 BLK M SEC 3 HEATHERWILDE SMALL LT SUBD LOC 1501 BLUE WILLOW COURT PFLUGERVILLE TX 78660",
+    "status_index": "Temp",
+    "global_id": "",
+    "trustee": "Saucedo",
+    "lender": "Lakeview Loan Servicing Llc",
+    "absentee": false,
+    "is_entity": false,
+    "duplicate": false,
+    "is_new": false,
+    "score": 10,
+    "flags": [],
+    "run_ts": "2026-10-01T18:00:05Z",
+    "mortgage_balance_est": "",
+    "tax_delinquent_amt": "",
+    "tax_delinquent_years": "",
+    "judgment_amt": "",
+    "hoa_lien_amt": "",
+    "mechanics_lien_amt": "",
+    "other_lien_amt": "",
+    "total_liens_est": "",
+    "equity_est": "",
+    "equity_pct": "",
+    "ltv_est": "",
+    "stacked_liens": [],
+    "market_value": "306141",
+    "appraised_val": "306141",
+    "assessed_val": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 392309
+      },
+      {
+        "year": "2023",
+        "appraised": 343381
+      },
+      {
+        "year": "2024",
+        "appraised": 343402
+      },
+      {
+        "year": "2025",
+        "appraised": 316636
+      },
+      {
+        "year": "2026",
+        "appraised": 306141
+      }
+    ],
+    "deed_date": "",
+    "prop_id": 444914,
+    "owner_mail_addr": "",
+    "arv_estimate": "",
+    "arv_status": "",
+    "arv_sqft": "",
+    "arv_fetched_at": "",
+    "on_market": false,
+    "on_market_status": "",
+    "on_market_checked_at": "",
+    "ce_case_id": "",
+    "ce_status": "",
+    "ce_priority": "",
+    "ce_case_type": "",
+    "ce_repeat_offender": false,
+    "ce_opened_date": "",
+    "dash_phone": "",
+    "dash_dispo": "new",
+    "dash_notes": "",
+    "ghl_pushed": false,
+    "ghl_id": "",
+    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/444914"
+  },
+  {
+    "doc_number": "202641321",
+    "county": "travis",
+    "type": "NOF",
+    "source": "tccsearch",
+    "owner": "Batiste Laura",
+    "address": "12805 DOOR BELL DRIVE",
+    "city": "Manor",
+    "zip": "78653",
+    "date_filed": "10/01/2026",
+    "sale_date": "12/01/2026",
+    "days_until_sale": 59,
+    "legal_desc": "LT 25 BLK F BELL FARMS LOC 12805 DOOR BELL DRIVE MANOR TX 78653 PDV 1-B",
+    "status_index": "Temp",
+    "global_id": "",
+    "trustee": "Saucedo",
+    "lender": "Midfirst Bank",
+    "absentee": false,
+    "is_entity": false,
+    "duplicate": false,
+    "is_new": false,
+    "score": 10,
+    "flags": [],
+    "run_ts": "2026-10-01T18:00:05Z",
+    "mortgage_balance_est": "",
+    "tax_delinquent_amt": "",
+    "tax_delinquent_years": "",
+    "judgment_amt": "",
+    "hoa_lien_amt": "",
+    "mechanics_lien_amt": "",
+    "other_lien_amt": "",
+    "total_liens_est": "",
+    "equity_est": "",
+    "equity_pct": "",
+    "ltv_est": "",
+    "stacked_liens": [],
+    "market_value": "245108",
+    "appraised_val": "245108",
+    "assessed_val": "",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 342370
+      },
+      {
+        "year": "2023",
+        "appraised": 315691
+      },
+      {
+        "year": "2024",
+        "appraised": 288596
+      },
+      {
+        "year": "2025",
+        "appraised": 270383
+      },
+      {
+        "year": "2026",
+        "appraised": 245108
+      }
+    ],
+    "deed_date": "",
+    "prop_id": 720853,
+    "owner_mail_addr": "",
+    "arv_estimate": "",
+    "arv_status": "",
+    "arv_sqft": "",
+    "arv_fetched_at": "",
+    "on_market": false,
+    "on_market_status": "",
+    "on_market_checked_at": "",
+    "ce_case_id": "",
+    "ce_status": "",
+    "ce_priority": "",
+    "ce_case_type": "",
+    "ce_repeat_offender": false,
+    "ce_opened_date": "",
+    "dash_phone": "",
+    "dash_dispo": "new",
+    "dash_notes": "",
+    "ghl_pushed": false,
+    "ghl_id": "",
+    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/720853"
   },
   {
     "doc_number": "202641330",
@@ -14899,68 +15466,6 @@
     "ghl_id": ""
   },
   {
-    "doc_number": "202641337",
-    "county": "travis",
-    "type": "NOF",
-    "source": "tccsearch",
-    "owner": "Jaques Sean",
-    "address": "16201 ARROW HEAD DRIVE",
-    "city": "Leander",
-    "zip": "78641",
-    "date_filed": "10/02/2026",
-    "sale_date": "11/03/2026",
-    "days_until_sale": 31,
-    "legal_desc": "LT 27 ROUND MOUNTAIN ESTATES LOC 16201 ARROW HEAD DRIVE LEANDER TX 78641",
-    "status_index": "Temp",
-    "global_id": "",
-    "trustee": "Zavala",
-    "lender": "Brighthouse Life Insurance Company",
-    "absentee": false,
-    "is_entity": false,
-    "duplicate": false,
-    "is_new": true,
-    "score": 9,
-    "flags": [],
-    "run_ts": "2026-10-03T15:35:19Z",
-    "mortgage_balance_est": "",
-    "tax_delinquent_amt": "",
-    "tax_delinquent_years": "",
-    "judgment_amt": "",
-    "hoa_lien_amt": "",
-    "mechanics_lien_amt": "",
-    "other_lien_amt": "",
-    "total_liens_est": "",
-    "equity_est": "",
-    "equity_pct": "",
-    "ltv_est": "",
-    "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
-    "assessed_val": "",
-    "value_history": [],
-    "deed_date": "",
-    "prop_id": "",
-    "owner_mail_addr": "",
-    "arv_estimate": "",
-    "arv_status": "",
-    "arv_sqft": "",
-    "arv_fetched_at": "",
-    "on_market": false,
-    "on_market_status": "",
-    "on_market_checked_at": "",
-    "ce_case_id": "",
-    "ce_status": "",
-    "ce_priority": "",
-    "ce_case_type": "",
-    "ce_repeat_offender": false,
-    "ce_opened_date": "",
-    "dash_phone": "",
-    "dash_dispo": "new",
-    "dash_notes": "",
-    "ghl_pushed": false,
-    "ghl_id": ""
-  },
-  {
     "doc_number": "202641302",
     "county": "travis",
     "type": "NOF",
@@ -14984,68 +15489,6 @@
     "score": 9,
     "flags": [],
     "run_ts": "2026-09-26T18:00:08Z",
-    "mortgage_balance_est": "",
-    "tax_delinquent_amt": "",
-    "tax_delinquent_years": "",
-    "judgment_amt": "",
-    "hoa_lien_amt": "",
-    "mechanics_lien_amt": "",
-    "other_lien_amt": "",
-    "total_liens_est": "",
-    "equity_est": "",
-    "equity_pct": "",
-    "ltv_est": "",
-    "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
-    "assessed_val": "",
-    "value_history": [],
-    "deed_date": "",
-    "prop_id": "",
-    "owner_mail_addr": "",
-    "arv_estimate": "",
-    "arv_status": "",
-    "arv_sqft": "",
-    "arv_fetched_at": "",
-    "on_market": false,
-    "on_market_status": "",
-    "on_market_checked_at": "",
-    "ce_case_id": "",
-    "ce_status": "",
-    "ce_priority": "",
-    "ce_case_type": "",
-    "ce_repeat_offender": false,
-    "ce_opened_date": "",
-    "dash_phone": "",
-    "dash_dispo": "new",
-    "dash_notes": "",
-    "ghl_pushed": false,
-    "ghl_id": ""
-  },
-  {
-    "doc_number": "202641333",
-    "county": "travis",
-    "type": "NOF",
-    "source": "tccsearch",
-    "owner": "Martinez Beau L",
-    "address": "4607 BLUE MEADOW DRIVE",
-    "city": "Austin",
-    "zip": "78744",
-    "date_filed": "10/01/2026",
-    "sale_date": "12/01/2026",
-    "days_until_sale": 59,
-    "legal_desc": "LT 6 BLK B MEADOW LAKE SUBD PHS 1-2 LOC 4607 BLUE MEADOW DRIVE AUSTIN TX 78744",
-    "status_index": "Temp",
-    "global_id": "",
-    "trustee": "Zavala",
-    "lender": "Rocket Mortgage Llc",
-    "absentee": false,
-    "is_entity": false,
-    "duplicate": false,
-    "is_new": false,
-    "score": 9,
-    "flags": [],
-    "run_ts": "2026-10-01T18:00:05Z",
     "mortgage_balance_est": "",
     "tax_delinquent_amt": "",
     "tax_delinquent_years": "",
@@ -15147,29 +15590,29 @@
     "ghl_id": ""
   },
   {
-    "doc_number": "202641325",
+    "doc_number": "026088584",
     "county": "travis",
     "type": "NOF",
     "source": "tccsearch",
-    "owner": "Jaeger Robert T",
-    "address": "1501 BLUE WILLOW COURT",
-    "city": "Pflugerville",
-    "zip": "78660",
-    "date_filed": "10/01/2026",
-    "sale_date": "12/01/2026",
-    "days_until_sale": 59,
-    "legal_desc": "LT 14 BLK E SEC 1 HOLLOW AT SLAUGHTER CREEK SMALL LT SUBD LOC 1501 BLUE WILLOW COURT PFLUGERVILLE TX 78660",
-    "status_index": "Temp",
+    "owner": "Alums Jamie",
+    "address": "6907 TULANE DRIVE",
+    "city": "Austin",
+    "zip": "78723",
+    "date_filed": "07/24/2026",
+    "sale_date": "",
+    "days_until_sale": null,
+    "legal_desc": "[E] PUBLIC THE (+)\nLT 15 BLK 2 OF RIVERBEND SEC 3C OF UNIVERSITY HILLS LOC 6907 TULANE DRIVE AUSTIN TX 78723",
+    "status_index": "Perm",
     "global_id": "",
-    "trustee": "Mackie",
-    "lender": "Midfirst Bank",
+    "trustee": "",
+    "lender": "",
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
     "is_new": false,
-    "score": 9,
+    "score": 8,
     "flags": [],
-    "run_ts": "2026-10-01T18:00:05Z",
+    "run_ts": "2026-09-01T18:09:31Z",
     "mortgage_balance_est": "",
     "tax_delinquent_amt": "",
     "tax_delinquent_years": "",
@@ -15182,20 +15625,12 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "300671",
+    "appraised_val": "300671",
     "assessed_val": "",
-    "value_history": [],
     "deed_date": "",
-    "prop_id": "",
+    "prop_id": 222765,
     "owner_mail_addr": "",
-    "arv_estimate": "",
-    "arv_status": "",
-    "arv_sqft": "",
-    "arv_fetched_at": "",
-    "on_market": false,
-    "on_market_status": "",
-    "on_market_checked_at": "",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -15206,32 +15641,58 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "on_market": true,
+    "on_market_status": "FOR_RENT",
+    "on_market_checked_at": "2026-09-13T18:19:18Z",
+    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/222765",
+    "value_history": [
+      {
+        "year": "2026",
+        "appraised": 300671
+      },
+      {
+        "year": "2025",
+        "appraised": 351619
+      },
+      {
+        "year": "2024",
+        "appraised": 396692
+      },
+      {
+        "year": "2023",
+        "appraised": 407556
+      },
+      {
+        "year": "2022",
+        "appraised": 465858
+      }
+    ]
   },
   {
-    "doc_number": "202641324",
+    "doc_number": "026088475",
     "county": "travis",
     "type": "NOF",
     "source": "tccsearch",
-    "owner": "Ging Stanley W",
-    "address": "1501 BLUE WILLOW COURT",
-    "city": "Pflugerville",
-    "zip": "78660",
-    "date_filed": "10/01/2026",
-    "sale_date": "12/01/2026",
-    "days_until_sale": 59,
-    "legal_desc": "LT 37 BLK M SEC 3 HEATHERWILDE SMALL LT SUBD LOC 1501 BLUE WILLOW COURT PFLUGERVILLE TX 78660",
-    "status_index": "Temp",
+    "owner": "Zavala Angela",
+    "address": "1825 FRIARS TALE LANE",
+    "city": "Austin",
+    "zip": "78748",
+    "date_filed": "07/24/2026",
+    "sale_date": "",
+    "days_until_sale": null,
+    "legal_desc": "[E] PUBLIC THE (+)\nLT 120 BLK B SEC III CANTERBURY TRAILS LOC 1825 FRIARS TALE LANE AUSTIN TX 78748",
+    "status_index": "Perm",
     "global_id": "",
-    "trustee": "Saucedo",
-    "lender": "Lakeview Loan Servicing Llc",
+    "trustee": "",
+    "lender": "",
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
     "is_new": false,
-    "score": 9,
+    "score": 8,
     "flags": [],
-    "run_ts": "2026-10-01T18:00:05Z",
+    "run_ts": "2026-09-01T18:09:31Z",
     "mortgage_balance_est": "",
     "tax_delinquent_amt": "",
     "tax_delinquent_years": "",
@@ -15244,20 +15705,12 @@
     "equity_pct": "",
     "ltv_est": "",
     "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
+    "market_value": "367984",
+    "appraised_val": "367984",
     "assessed_val": "",
-    "value_history": [],
     "deed_date": "",
-    "prop_id": "",
+    "prop_id": 466634,
     "owner_mail_addr": "",
-    "arv_estimate": "",
-    "arv_status": "",
-    "arv_sqft": "",
-    "arv_fetched_at": "",
-    "on_market": false,
-    "on_market_status": "",
-    "on_market_checked_at": "",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -15268,69 +15721,37 @@
     "dash_dispo": "new",
     "dash_notes": "",
     "ghl_pushed": false,
-    "ghl_id": ""
-  },
-  {
-    "doc_number": "202641321",
-    "county": "travis",
-    "type": "NOF",
-    "source": "tccsearch",
-    "owner": "Batiste Laura",
-    "address": "12805 DOOR BELL DRIVE",
-    "city": "Manor",
-    "zip": "78653",
-    "date_filed": "10/01/2026",
-    "sale_date": "12/01/2026",
-    "days_until_sale": 59,
-    "legal_desc": "LT 25 BLK F BELL FARMS LOC 12805 DOOR BELL DRIVE MANOR TX 78653 PDV 1-B",
-    "status_index": "Temp",
-    "global_id": "",
-    "trustee": "Saucedo",
-    "lender": "Midfirst Bank",
-    "absentee": false,
-    "is_entity": false,
-    "duplicate": false,
-    "is_new": false,
-    "score": 9,
-    "flags": [],
-    "run_ts": "2026-10-01T18:00:05Z",
-    "mortgage_balance_est": "",
-    "tax_delinquent_amt": "",
-    "tax_delinquent_years": "",
-    "judgment_amt": "",
-    "hoa_lien_amt": "",
-    "mechanics_lien_amt": "",
-    "other_lien_amt": "",
-    "total_liens_est": "",
-    "equity_est": "",
-    "equity_pct": "",
-    "ltv_est": "",
-    "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
-    "assessed_val": "",
-    "value_history": [],
-    "deed_date": "",
-    "prop_id": "",
-    "owner_mail_addr": "",
-    "arv_estimate": "",
-    "arv_status": "",
-    "arv_sqft": "",
-    "arv_fetched_at": "",
-    "on_market": false,
-    "on_market_status": "",
-    "on_market_checked_at": "",
-    "ce_case_id": "",
-    "ce_status": "",
-    "ce_priority": "",
-    "ce_case_type": "",
-    "ce_repeat_offender": false,
-    "ce_opened_date": "",
-    "dash_phone": "",
-    "dash_dispo": "new",
-    "dash_notes": "",
-    "ghl_pushed": false,
-    "ghl_id": ""
+    "ghl_id": "",
+    "on_market": true,
+    "on_market_status": "PENDING",
+    "on_market_checked_at": "2026-10-01T20:15:22Z",
+    "arv_estimate": 357000,
+    "arv_status": "FOR_SALE",
+    "arv_sqft": 1271,
+    "arv_fetched_at": "2026-09-05T23:45:24Z",
+    "_tcad_hyperlink": "https://stage.travis.prodigycad.com/property-detail/466634",
+    "value_history": [
+      {
+        "year": "2022",
+        "appraised": 423823
+      },
+      {
+        "year": "2023",
+        "appraised": 419776
+      },
+      {
+        "year": "2024",
+        "appraised": 424910
+      },
+      {
+        "year": "2025",
+        "appraised": 422332
+      },
+      {
+        "year": "2026",
+        "appraised": 367984
+      }
+    ]
   },
   {
     "doc_number": "202641158",
@@ -17445,7 +17866,7 @@
     "absentee": false,
     "is_entity": false,
     "duplicate": false,
-    "is_new": true,
+    "is_new": false,
     "score": 7,
     "flags": [],
     "run_ts": "2026-10-03T15:35:19Z",
@@ -17920,124 +18341,6 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": ""
-  },
-  {
-    "doc_number": "026088584",
-    "county": "travis",
-    "type": "NOF",
-    "source": "tccsearch",
-    "owner": "Alums Jamie",
-    "address": "6907 TULANE DRIVE",
-    "city": "Austin",
-    "zip": "78723",
-    "date_filed": "07/24/2026",
-    "sale_date": "",
-    "days_until_sale": null,
-    "legal_desc": "[E] PUBLIC THE (+)\nLT 15 BLK 2 OF RIVERBEND SEC 3C OF UNIVERSITY HILLS LOC 6907 TULANE DRIVE AUSTIN TX 78723",
-    "status_index": "Perm",
-    "global_id": "",
-    "trustee": "",
-    "lender": "",
-    "absentee": false,
-    "is_entity": false,
-    "duplicate": false,
-    "is_new": false,
-    "score": 7,
-    "flags": [],
-    "run_ts": "2026-09-01T18:09:31Z",
-    "mortgage_balance_est": "",
-    "tax_delinquent_amt": "",
-    "tax_delinquent_years": "",
-    "judgment_amt": "",
-    "hoa_lien_amt": "",
-    "mechanics_lien_amt": "",
-    "other_lien_amt": "",
-    "total_liens_est": "",
-    "equity_est": "",
-    "equity_pct": "",
-    "ltv_est": "",
-    "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
-    "assessed_val": "",
-    "deed_date": "",
-    "prop_id": "",
-    "owner_mail_addr": "",
-    "ce_case_id": "",
-    "ce_status": "",
-    "ce_priority": "",
-    "ce_case_type": "",
-    "ce_repeat_offender": false,
-    "ce_opened_date": "",
-    "dash_phone": "",
-    "dash_dispo": "new",
-    "dash_notes": "",
-    "ghl_pushed": false,
-    "ghl_id": "",
-    "on_market": true,
-    "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-09-13T18:19:18Z"
-  },
-  {
-    "doc_number": "026088475",
-    "county": "travis",
-    "type": "NOF",
-    "source": "tccsearch",
-    "owner": "Zavala Angela",
-    "address": "1825 FRIARS TALE LANE",
-    "city": "Austin",
-    "zip": "78748",
-    "date_filed": "07/24/2026",
-    "sale_date": "",
-    "days_until_sale": null,
-    "legal_desc": "[E] PUBLIC THE (+)\nLT 120 BLK B SEC III CANTERBURY TRAILS LOC 1825 FRIARS TALE LANE AUSTIN TX 78748",
-    "status_index": "Perm",
-    "global_id": "",
-    "trustee": "",
-    "lender": "",
-    "absentee": false,
-    "is_entity": false,
-    "duplicate": false,
-    "is_new": false,
-    "score": 7,
-    "flags": [],
-    "run_ts": "2026-09-01T18:09:31Z",
-    "mortgage_balance_est": "",
-    "tax_delinquent_amt": "",
-    "tax_delinquent_years": "",
-    "judgment_amt": "",
-    "hoa_lien_amt": "",
-    "mechanics_lien_amt": "",
-    "other_lien_amt": "",
-    "total_liens_est": "",
-    "equity_est": "",
-    "equity_pct": "",
-    "ltv_est": "",
-    "stacked_liens": [],
-    "market_value": "",
-    "appraised_val": "",
-    "assessed_val": "",
-    "deed_date": "",
-    "prop_id": "",
-    "owner_mail_addr": "",
-    "ce_case_id": "",
-    "ce_status": "",
-    "ce_priority": "",
-    "ce_case_type": "",
-    "ce_repeat_offender": false,
-    "ce_opened_date": "",
-    "dash_phone": "",
-    "dash_dispo": "new",
-    "dash_notes": "",
-    "ghl_pushed": false,
-    "ghl_id": "",
-    "on_market": true,
-    "on_market_status": "PENDING",
-    "on_market_checked_at": "2026-10-01T20:15:22Z",
-    "arv_estimate": 357000,
-    "arv_status": "FOR_SALE",
-    "arv_sqft": 1271,
-    "arv_fetched_at": "2026-09-05T23:45:24Z"
   },
   {
     "doc_number": "026102804",
