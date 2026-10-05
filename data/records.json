@@ -76,7 +76,7 @@
     ],
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:04:42Z",
+    "on_market_checked_at": "2026-10-05T19:37:41Z",
     "arv_estimate": 548800,
     "arv_status": "SOLD",
     "arv_sqft": 1544,
@@ -159,7 +159,7 @@
     ],
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:04:45Z",
+    "on_market_checked_at": "2026-10-05T19:37:44Z",
     "arv_estimate": 376624,
     "arv_status": "SOLD",
     "arv_sqft": 1801,
@@ -242,7 +242,7 @@
     ],
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:04:48Z",
+    "on_market_checked_at": "2026-10-05T19:37:46Z",
     "arv_estimate": 462700,
     "arv_status": "SOLD",
     "arv_sqft": 2268,
@@ -325,7 +325,7 @@
     ],
     "on_market": true,
     "on_market_status": "PENDING",
-    "on_market_checked_at": "2026-10-05T18:04:50Z",
+    "on_market_checked_at": "2026-10-05T19:37:49Z",
     "arv_estimate": 389000,
     "arv_status": "PENDING",
     "arv_sqft": 1627,
@@ -408,7 +408,7 @@
     ],
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:04:53Z",
+    "on_market_checked_at": "2026-10-05T19:37:52Z",
     "arv_estimate": 412026,
     "arv_status": "SOLD",
     "arv_sqft": 3261,
@@ -491,7 +491,7 @@
     ],
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:04:56Z",
+    "on_market_checked_at": "2026-10-05T19:37:54Z",
     "arv_estimate": 1504000,
     "arv_status": "SOLD",
     "arv_sqft": 5238,
@@ -574,7 +574,7 @@
     ],
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:04:58Z",
+    "on_market_checked_at": "2026-10-05T19:37:57Z",
     "arv_estimate": 300600,
     "arv_status": "SOLD",
     "arv_sqft": 1843,
@@ -657,7 +657,7 @@
     ],
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:05:01Z",
+    "on_market_checked_at": "2026-10-05T19:37:59Z",
     "arv_estimate": 500868,
     "arv_status": "SOLD",
     "arv_sqft": 2429,
@@ -740,7 +740,7 @@
     ],
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:05:04Z",
+    "on_market_checked_at": "2026-10-05T19:38:02Z",
     "arv_estimate": 528000,
     "arv_status": "SOLD",
     "arv_sqft": 2556,
@@ -823,7 +823,7 @@
     ],
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:05:08Z",
+    "on_market_checked_at": "2026-10-05T19:38:05Z",
     "arv_estimate": 1039900,
     "arv_status": "SOLD",
     "arv_sqft": 4633,
@@ -906,7 +906,7 @@
     ],
     "on_market": true,
     "on_market_status": "PENDING",
-    "on_market_checked_at": "2026-10-05T18:05:10Z",
+    "on_market_checked_at": "2026-10-05T19:38:07Z",
     "arv_estimate": 315072,
     "arv_status": "FOR_SALE",
     "arv_sqft": 2570,
@@ -982,7 +982,7 @@
     "arv_fetched_at": "2026-09-13T18:19:25Z",
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:05:13Z",
+    "on_market_checked_at": "2026-10-05T19:38:10Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -1065,7 +1065,7 @@
     "arv_fetched_at": "2026-09-13T18:19:36Z",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-05T18:05:16Z",
+    "on_market_checked_at": "2026-10-05T19:38:12Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -1148,7 +1148,7 @@
     "arv_fetched_at": "2026-09-13T18:19:41Z",
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T18:05:18Z",
+    "on_market_checked_at": "2026-10-05T19:38:15Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -1231,7 +1231,7 @@
     "arv_fetched_at": "2026-09-13T18:19:44Z",
     "on_market": true,
     "on_market_status": "PENDING",
-    "on_market_checked_at": "2026-10-05T18:05:21Z",
+    "on_market_checked_at": "2026-10-05T19:38:18Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -2295,7 +2295,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_SALE",
-    "on_market_checked_at": "2026-10-05T17:25:46Z",
+    "on_market_checked_at": "2026-10-05T19:35:12Z",
     "value_history": [
       {
         "year": "2022",
@@ -2374,7 +2374,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:25:59Z",
+    "on_market_checked_at": "2026-10-05T19:35:24Z",
     "value_history": [
       {
         "year": "2022",
@@ -2536,7 +2536,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:26:15Z",
+    "on_market_checked_at": "2026-10-05T19:35:36Z",
     "value_history": [
       {
         "year": "2022",
@@ -2615,7 +2615,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:26:24Z",
+    "on_market_checked_at": "2026-10-05T19:35:40Z",
     "value_history": [
       {
         "year": "2026",
@@ -2775,7 +2775,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-05T17:26:26Z",
+    "on_market_checked_at": "2026-10-05T19:35:42Z",
     "value_history": [
       {
         "year": "2022",
@@ -3184,7 +3184,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-05T17:26:28Z",
+    "on_market_checked_at": "2026-10-05T19:35:44Z",
     "value_history": [
       {
         "year": "2022",
@@ -3263,7 +3263,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:26:33Z",
+    "on_market_checked_at": "2026-10-05T19:35:48Z",
     "value_history": [
       {
         "year": "2022",
@@ -3694,7 +3694,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-05T17:26:35Z"
+    "on_market_checked_at": "2026-10-05T19:35:50Z"
   },
   {
     "doc_number": "202641177",
@@ -4181,7 +4181,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:26:40Z",
+    "on_market_checked_at": "2026-10-05T19:35:54Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -4264,7 +4264,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:26:45Z",
+    "on_market_checked_at": "2026-10-05T19:35:58Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -4477,7 +4477,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-05T17:26:48Z"
+    "on_market_checked_at": "2026-10-05T19:36:00Z"
   },
   {
     "doc_number": "202641154",
@@ -4534,7 +4534,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-05T17:26:51Z"
+    "on_market_checked_at": "2026-10-05T19:36:03Z"
   },
   {
     "doc_number": "202641143",
@@ -4589,7 +4589,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-05T17:26:53Z"
+    "on_market_checked_at": "2026-10-05T19:36:05Z"
   },
   {
     "doc_number": "202641114",
@@ -4768,7 +4768,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "SOLD",
-    "on_market_checked_at": "2026-10-05T17:26:56Z"
+    "on_market_checked_at": "2026-10-05T19:36:08Z"
   },
   {
     "doc_number": "202641090",
@@ -4945,7 +4945,7 @@
     "dash_notes": "",
     "ghl_pushed": false,
     "ghl_id": "",
-    "on_market_checked_at": "2026-10-05T17:26:58Z"
+    "on_market_checked_at": "2026-10-05T19:36:10Z"
   },
   {
     "doc_number": "202641028",
@@ -5186,7 +5186,7 @@
     "ghl_id": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-05T17:27:02Z"
+    "on_market_checked_at": "2026-10-05T19:36:13Z"
   },
   {
     "doc_number": "202641188",
@@ -5423,7 +5423,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:27:08Z",
+    "on_market_checked_at": "2026-10-05T19:36:17Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5485,7 +5485,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:27:24Z",
+    "on_market_checked_at": "2026-10-05T19:36:30Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5547,7 +5547,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-05T17:27:26Z",
+    "on_market_checked_at": "2026-10-05T19:36:32Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5609,7 +5609,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-05T17:27:29Z",
+    "on_market_checked_at": "2026-10-05T19:36:35Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5857,7 +5857,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-05T17:27:31Z",
+    "on_market_checked_at": "2026-10-05T19:36:37Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -5919,7 +5919,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-05T17:27:33Z",
+    "on_market_checked_at": "2026-10-05T19:36:38Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -6167,7 +6167,7 @@
     "arv_fetched_at": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:27:38Z",
+    "on_market_checked_at": "2026-10-05T19:36:44Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -6229,7 +6229,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "OFF_MARKET",
-    "on_market_checked_at": "2026-10-05T17:27:41Z",
+    "on_market_checked_at": "2026-10-05T19:36:47Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -12194,7 +12194,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-05T17:27:55Z",
+    "on_market_checked_at": "2026-10-05T19:36:58Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
@@ -12839,7 +12839,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:28:07Z",
+    "on_market_checked_at": "2026-10-05T19:37:09Z",
     "value_history": [
       {
         "year": "2022",
@@ -13106,7 +13106,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:28:19Z"
+    "on_market_checked_at": "2026-10-05T19:37:21Z"
   },
   {
     "doc_number": "202641173",
@@ -13185,7 +13185,7 @@
     "ghl_id": "",
     "on_market": true,
     "on_market_status": "FOR_RENT",
-    "on_market_checked_at": "2026-10-05T17:28:37Z"
+    "on_market_checked_at": "2026-10-05T19:37:34Z"
   },
   {
     "doc_number": "202641172",
@@ -13262,7 +13262,7 @@
     "dash_notes": "",
     "ghl_pushed": true,
     "ghl_id": "rlY5cQ3rcUU4XXH0nOY0",
-    "on_market_checked_at": "2026-10-05T17:28:39Z",
+    "on_market_checked_at": "2026-10-05T19:37:36Z",
     "dash_searched_at": "2026-09-22T19:35:16.913Z",
     "ghl_pushed_at": "2026-09-22T19:35:16.913Z"
   },
@@ -13419,7 +13419,7 @@
     "arv_fetched_at": "",
     "on_market": false,
     "on_market_status": "",
-    "on_market_checked_at": "2026-10-05T17:28:42Z",
+    "on_market_checked_at": "2026-10-05T19:37:39Z",
     "ce_case_id": "",
     "ce_status": "",
     "ce_priority": "",
