@@ -201,7 +201,7 @@ def new_record(doc_number, lead_type, source="tccsearch", run_ts=None):
         "ce_repeat_offender":  False,
         "ce_opened_date":      "",
         # ── Dashboard/CRM fields ────────────────────────────────────────────
-        "dash_phone":          "",
+        "dash_has_phone":      False,
         "dash_dispo":          "new",
         "dash_notes":          "",
         "ghl_pushed":          False,
@@ -1091,7 +1091,7 @@ def purge_past_auctions(records):
     purged = 0
     for r in records:
         if r.get("type") in ("NOF",) and r.get("sale_date"):
-            if auction_passed(r["sale_date"]) and not (r.get("dash_phone") or r.get("ghl_pushed")):
+            if auction_passed(r["sale_date"]) and not (r.get("dash_phone") or r.get("dash_has_phone") or r.get("ghl_pushed")):
                 purged += 1
                 continue
         keep.append(r)
@@ -1238,7 +1238,7 @@ def main():
     all_records = [
         r for r in all_records
         if r.get("type") in ("CE", "APPT")
-        or r.get("ghl_pushed") or r.get("dash_phone")
+        or r.get("ghl_pushed") or r.get("dash_has_phone") or r.get("dash_phone")
         or filed_within_window(r.get("date_filed", ""), SCRAPE_DAYS)
     ]
     log.info(f"{SCRAPE_DAYS}d filter: {before} -> {len(all_records)}")
@@ -1263,6 +1263,14 @@ def main():
 
     log.info(f"Final: {total} total | {new_ct} new | NOF={nof_ct} | CE={ce_ct}")
     log.info(f"       Stacked (2+ lien types): {stacked} | TCAD parcel-matched: {enriched}")
+
+    # 2026-11-12 privacy: phones, notes and lookup dates live ONLY in the private repo
+    # (e4property/e4-leads-private). Never publish them; public records get dash_has_phone only.
+    for _r in all_records:
+        if _r.get("dash_phone"):
+            _r["dash_has_phone"] = True
+        for _k in ("dash_phone", "dash_notes", "dash_searched_at"):
+            _r.pop(_k, None)
 
     DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
     DATA_PATH.write_text(json.dumps(all_records, indent=2), encoding="utf-8")
